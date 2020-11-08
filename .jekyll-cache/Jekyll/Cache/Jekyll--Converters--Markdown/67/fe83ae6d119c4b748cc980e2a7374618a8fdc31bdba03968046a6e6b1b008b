@@ -1,9 +1,0 @@
-I"d<h2 id="1在github创建repository">1.在Github创建repository</h2>
-<p>需要创建username.github.io格式的repository，
-这样才能使用username.github.io来访问gitpage</p>
-
-<h2 id="2配置安装本地环境">2.配置安装本地环境</h2>
-<p>需要安装bundle，gem</p>
-
-<p><img src="/images/moonwhite_2020-11-07_19-52-20.png" alt="img" /></p>
-:ET

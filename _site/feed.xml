@@ -1,11 +1,72 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-11-08T10:55:03+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">m00nwhite</title><subtitle>独立开发者，全栈工程师，特许金融分析师。 专注IT技术、金融科技、前端设计和网络安全。 Independent developer, fullstack developer, CFA. focus on IT and financial technology, front-end design and network security.</subtitle><entry><title type="html">使用Gitpage和Jekyll搭建个人博客</title><link href="http://localhost:4000/jekyll/update/2020/11/07/start-to-use-gitpage.html" rel="alternate" type="text/html" title="使用Gitpage和Jekyll搭建个人博客" /><published>2020-11-07T12:00:25+08:00</published><updated>2020-11-07T12:00:25+08:00</updated><id>http://localhost:4000/jekyll/update/2020/11/07/start-to-use-gitpage</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2020/11/07/start-to-use-gitpage.html">&lt;h2 id=&quot;1在github创建repository&quot;&gt;1.在Github创建repository&lt;/h2&gt;
-&lt;p&gt;需要创建username.github.io格式的repository，
-这样才能使用username.github.io来访问gitpage&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-11-08T22:44:17+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">m00nwhite</title><subtitle>独立开发者，全栈工程师，特许金融分析师。 专注IT技术、金融科技、前端设计和网络安全。 Independent developer, fullstack developer, CFA. focus on IT and financial technology, front-end design and network security.</subtitle><entry><title type="html">使用Gitpage和Jekyll搭建个人博客</title><link href="http://localhost:4000/jekyll/update/2020/11/07/start-to-use-gitpage.html" rel="alternate" type="text/html" title="使用Gitpage和Jekyll搭建个人博客" /><published>2020-11-07T12:00:25+08:00</published><updated>2020-11-07T12:00:25+08:00</updated><id>http://localhost:4000/jekyll/update/2020/11/07/start-to-use-gitpage</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2020/11/07/start-to-use-gitpage.html">&lt;h1 id=&quot;如何开始搭建个人博客&quot;&gt;如何开始搭建个人博客&lt;/h1&gt;
+&lt;p&gt;工作生活中经常会遇到一些需要记录下来的东西，将搭建的过程记录下来以备和我遇到相同问题的同学参考。
+本人使用Mac，搭建过程中主要使用到的工具如下：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Github账户 + GitPage配置&lt;/li&gt;
+  &lt;li&gt;Jekyll / Hexo （生成静态HTML页面）&lt;/li&gt;
+  &lt;li&gt;七牛云账户 + qshell（用于存储Blog重的图片）&lt;/li&gt;
+  &lt;li&gt;Alfred + Powerpack + qimage-mac（用于本地截图或文档自动上传七牛云对象存储，Windows可使用AutoHotKey）&lt;/li&gt;
+  &lt;li&gt;vscode + Markdown All in One + Markdown Preview Github Styling (用于本地编辑markdown及实时预览)&lt;/li&gt;
+  &lt;li&gt;Snipaste 或其他截图工具&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;h2 id=&quot;2配置安装本地环境&quot;&gt;2.配置安装本地环境&lt;/h2&gt;
-&lt;p&gt;需要安装bundle，gem&lt;/p&gt;
+&lt;h2 id=&quot;1-github及相关配置&quot;&gt;1. GitHub及相关配置&lt;/h2&gt;
+&lt;h3 id=&quot;1-1-创建repository&quot;&gt;1-1 创建repository&lt;/h3&gt;
+&lt;p&gt;登陆Github，并新建一个repository，这里需要注意一下的是需要按照&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;username.github.io&lt;/code&gt;格式来创建repository，这样后面才能够使用&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://username.github.io&lt;/code&gt;这样的URL来访问GitPage。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/moonwhite_2020-11-07_19-52-20.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">1.在Github创建repository 需要创建username.github.io格式的repository， 这样才能使用username.github.io来访问gitpage</summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/jekyll/update/2020/11/06/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2020-11-06T19:15:25+08:00</published><updated>2020-11-06T19:15:25+08:00</updated><id>http://localhost:4000/jekyll/update/2020/11/06/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2020/11/06/welcome-to-jekyll.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://qjgzlme4a.hb-bkt.clouddn.com/img/create_github_repo.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;1-2-修改repository的setting&quot;&gt;1-2 修改repository的Setting&lt;/h3&gt;
+&lt;p&gt;找到Repository的Setting tab页面，如下图：
+&lt;img src=&quot;http://qjgzlme4a.hb-bkt.clouddn.com/img/20201108_github_setting.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;向下一直拖动到GitHub Pages页面，启用GitPages，这里可以设置GitPages使用哪个分支，修改显示的主题风格，以及修改为自定义的域名。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://qjgzlme4a.hb-bkt.clouddn.com/img/20201108_github_page_setting.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;至此，基于GitPages的一个免费个人博客就已经搭建成功了，我们在代码中可以直接编辑html，然后访问username.github.io即可看到个人博客网站的显示结果。
+比如将以下代码保存成index.html放到repository的根目录：&lt;/p&gt;
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE HTML&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;m00nwhite&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+		welcome to m00nwhite.github.io! 
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;然后访问&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;username.github.io&lt;/code&gt; 即可看到显示结果&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://qjgzlme4a.hb-bkt.clouddn.com/img/20201108_github_test_index.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;2jekyll及相关配置&quot;&gt;2.Jekyll及相关配置&lt;/h2&gt;
+&lt;p&gt;Jekyll是GitHub官方指定的免费Blog生成框架，也可以使用Hexo，看个人喜好，Jekyll和GitPage的契合度更高一些，但是生成静态页面的速度方面不如Hexo迅速，使用方面较Hexo也略微复杂一些，这里使用Jekyll，单纯的是因为想学习一下。&lt;/p&gt;
+
+&lt;p&gt;官方网址：&lt;a href=&quot;https://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;2-1-jekyll的安装&quot;&gt;2-1 jekyll的安装&lt;/h3&gt;
+&lt;p&gt;先来看一下官方安装教程，简单得只有一张图：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://qjgzlme4a.hb-bkt.clouddn.com/img/20201108_jekyll_install.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;需要安装bundler，gem&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 安装bundler和gem&lt;/span&gt;
+gem &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;bundler jekyll
+
+&lt;span class=&quot;c&quot;&gt;# 使用jekyll新建一个博客项目，m00nwhite请替换成你喜欢的名字&lt;/span&gt;
+jekyll new m00nwhite
+
+&lt;span class=&quot;c&quot;&gt;# 进入到jekyll为你创建的文件夹，并启动jekyll的本地服务&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;m00nwhite
+bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll serve
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;执行了上面的命令之后，jekyll就为你在本地4000端口创建了一个博客服务。
+&lt;img src=&quot;http://qjgzlme4a.hb-bkt.clouddn.com/img/20201108_jekyll_local_server.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;使用浏览器访问一下，可以看到Jekyll为我们生成的页面：
+&lt;img src=&quot;http://qjgzlme4a.hb-bkt.clouddn.com/img/20201108_local_jekyll_server_started.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">如何开始搭建个人博客 工作生活中经常会遇到一些需要记录下来的东西，将搭建的过程记录下来以备和我遇到相同问题的同学参考。 本人使用Mac，搭建过程中主要使用到的工具如下： Github账户 + GitPage配置 Jekyll / Hexo （生成静态HTML页面） 七牛云账户 + qshell（用于存储Blog重的图片） Alfred + Powerpack + qimage-mac（用于本地截图或文档自动上传七牛云对象存储，Windows可使用AutoHotKey） vscode + Markdown All in One + Markdown Preview Github Styling (用于本地编辑markdown及实时预览) Snipaste 或其他截图工具</summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/jekyll/update/2020/11/06/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2020-11-06T19:15:25+08:00</published><updated>2020-11-06T19:15:25+08:00</updated><id>http://localhost:4000/jekyll/update/2020/11/06/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2020/11/06/welcome-to-jekyll.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
 
 &lt;p&gt;Jekyll requires blog post files to be named according to the following format:&lt;/p&gt;
 
