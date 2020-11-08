@@ -12,4 +12,4 @@ categories: jekyll update
 ## 2.配置安装本地环境
 需要安装bundle，gem
 
-![img](/images/moonwhite_2020-11-07_19-52-20.png)
+![img](http://qjgzlme4a.hb-bkt.clouddn.com/moonwhite_2020-11-07_19-52-20.png)
