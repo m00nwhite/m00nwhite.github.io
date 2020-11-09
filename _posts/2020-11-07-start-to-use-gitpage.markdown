@@ -57,7 +57,7 @@ Jekyll是GitHub官方指定的免费Blog生成框架，也可以使用Hexo，看
 ### 2-1 jekyll的安装
 先来看一下官方安装教程，简单得只有一张图：
 
-![img](http://qjgzlme4a.hb-bkt.clouddn.com/img/20201108_jekyll_install.png)
+![](http://qjgzlme4a.hb-bkt.clouddn.com/img/20201108_jekyll_install.png)
 
 需要安装bundler，gem
 ```bash
