@@ -4,7 +4,6 @@ title:  "使用Gitpage和Jekyll搭建个人博客"
 date:   2020-11-07 12:00:25 +0800
 categories: jekyll update
 ---
-# 如何开始搭建个人博客
 工作生活中经常会遇到一些需要记录下来的东西，设想是本地编写markdown文档，文档中的各种图片资源会随时使用截图工具或者图片文件，使用Alfred或者AutoHotKey自动将图片或者剪贴板中的截图内容上传至七牛云图床，并返回markdown格式的图片链接，本地编写好之后git push到GitHub上面，使用GitPages自动生成博客。
 将搭建的过程记录下来以备和我有相同需求或者遇到相同问题的同学参考。
 本人使用Mac，搭建过程也以Mac过程为主，主要使用到的工具如下：
@@ -52,7 +51,7 @@ categories: jekyll update
 
 
 ## 2.Jekyll及相关配置
-Jekyll是GitHub官方指定的免费Blog生成框架，也可以使用Hexo，看个人喜好，Jekyll和GitPage的契合度更高一些，但是生成静态页面的速度方面不如Hexo迅速，使用方面较Hexo也略微复杂一些，这里使用Jekyll，单纯的是因为想学习一下。
+Jekyll是一个的免费Blog生成框架，可以运行在GitHub Pages上，详细的使用教程请参考 [官方文档](http://jekyllcn.com/docs/home/)。 也可以使用Hexo，看个人喜好，Jekyll和GitPage的契合度更高一些，但是生成静态页面的速度方面不如Hexo迅速，使用方面较Hexo也略微复杂一些，这里使用Jekyll，单纯的是因为想学习一下。
 
 官方网址：[Jekyll](https://jekyllrb.com/)
 
@@ -98,7 +97,8 @@ bundle exec jekyll serve
 下载对应平台的qshell并安装即可。
 
 一些需要鉴权的qshell命令需要先设置好AK（`AccessKey`）和SK(`SecretKey`)，这两个Key在七牛管理控制台右侧的密钥管理中可以找到。
-![img](http://sjdt.online/img/20201110_qiniu_key.png)
+![](http://sjdt.online/img/20201110_qiniu_miyao.png)
+
 
 
 ![img](http://sjdt.online/img/20201110_qiniu_aksk.png)
@@ -126,6 +126,16 @@ qshell account ak sk name
 
 这里在执行的时候报错了，调试发现设置qshell账户的shell命令行参数数量不对，因为之前已经设置过了，这里就直接注释掉了，速度还能快一些。
 ![](http://sjdt.online/img/20201110_qiniu_uploadworkflow.png)
+
+最后，将GitHub上的仓库克隆到本地，修改之后再push就可以直接更新博客内容了。
+```bash
+git clone git@github.com:username/username.github.io.git
+# 修改markdown文档
+git commit -m "your comment"
+git push 
+```
+
+本地修改可以使用`vscode`或者`typora`，`vscode`需要安装`Markdown All in One` 和 `Markdown Preview Github Styling`两个插件，可以在编辑markdown文件的时候实时生成预览效果。
 
 ## 4. 一些问题
 搭建过程中并不是一帆风顺的，难免遇到一些问题

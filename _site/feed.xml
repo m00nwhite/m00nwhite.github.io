@@ -1,6 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-11-09T21:01:31+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">m00nwhite</title><subtitle>独立开发者，全栈工程师，特许金融分析师。 专注IT技术、金融科技、前端设计和网络安全。 Independent developer, fullstack developer, CFA. focus on IT and financial technology, front-end design and network security.</subtitle><entry><title type="html">使用Gitpage和Jekyll搭建个人博客</title><link href="http://localhost:4000/jekyll/update/2020/11/07/start-to-use-gitpage.html" rel="alternate" type="text/html" title="使用Gitpage和Jekyll搭建个人博客" /><published>2020-11-07T12:00:25+08:00</published><updated>2020-11-07T12:00:25+08:00</updated><id>http://localhost:4000/jekyll/update/2020/11/07/start-to-use-gitpage</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2020/11/07/start-to-use-gitpage.html">&lt;h1 id=&quot;如何开始搭建个人博客&quot;&gt;如何开始搭建个人博客&lt;/h1&gt;
-&lt;p&gt;工作生活中经常会遇到一些需要记录下来的东西，将搭建的过程记录下来以备和我遇到相同问题的同学参考。
-本人使用Mac，搭建过程中主要使用到的工具如下：&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-11-10T20:00:57+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">m00nwhite</title><subtitle>独立开发者，全栈工程师，特许金融分析师。 专注IT技术、金融科技、前端设计和网络安全。 Independent developer, fullstack developer, CFA. focus on IT and financial technology, front-end design and network security.</subtitle><entry><title type="html">使用Gitpage和Jekyll搭建个人博客</title><link href="http://localhost:4000/jekyll/update/2020/11/07/start-to-use-gitpage.html" rel="alternate" type="text/html" title="使用Gitpage和Jekyll搭建个人博客" /><published>2020-11-07T12:00:25+08:00</published><updated>2020-11-07T12:00:25+08:00</updated><id>http://localhost:4000/jekyll/update/2020/11/07/start-to-use-gitpage</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2020/11/07/start-to-use-gitpage.html">&lt;h1 id=&quot;如何开始搭建个人博客&quot;&gt;如何开始搭建个人博客&lt;/h1&gt;
+&lt;p&gt;工作生活中经常会遇到一些需要记录下来的东西，设想是本地编写markdown文档，文档中的各种图片资源会随时使用截图工具或者图片文件，使用Alfred或者AutoHotKey自动将图片或者剪贴板中的截图内容上传至七牛云图床，并返回markdown格式的图片链接，本地编写好之后git push到GitHub上面，使用GitPages自动生成博客。
+将搭建的过程记录下来以备和我有相同需求或者遇到相同问题的同学参考。
+本人使用Mac，搭建过程也以Mac过程为主，主要使用到的工具如下：&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;Github账户 + GitPage配置&lt;/li&gt;
   &lt;li&gt;Jekyll / Hexo （生成静态HTML页面）&lt;/li&gt;
@@ -8,6 +9,7 @@
   &lt;li&gt;Alfred + Powerpack + qimage-mac（用于本地截图或文档自动上传七牛云对象存储，Windows可使用AutoHotKey）&lt;/li&gt;
   &lt;li&gt;vscode + Markdown All in One + Markdown Preview Github Styling (用于本地编辑markdown及实时预览)&lt;/li&gt;
   &lt;li&gt;Snipaste 或其他截图工具&lt;/li&gt;
+  &lt;li&gt;一个免费或收费的域名&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;1-github及相关配置&quot;&gt;1. GitHub及相关配置&lt;/h2&gt;
@@ -41,7 +43,7 @@
 &lt;p&gt;&lt;img src=&quot;http://sjdt.online/img/20201108_github_test_index.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;2jekyll及相关配置&quot;&gt;2.Jekyll及相关配置&lt;/h2&gt;
-&lt;p&gt;Jekyll是GitHub官方指定的免费Blog生成框架，也可以使用Hexo，看个人喜好，Jekyll和GitPage的契合度更高一些，但是生成静态页面的速度方面不如Hexo迅速，使用方面较Hexo也略微复杂一些，这里使用Jekyll，单纯的是因为想学习一下。&lt;/p&gt;
+&lt;p&gt;Jekyll是一个的免费Blog生成框架，可以运行在GitHub Pages上，详细的使用教程请参考 &lt;a href=&quot;http://jekyllcn.com/docs/home/&quot;&gt;官方文档&lt;/a&gt;。 也可以使用Hexo，看个人喜好，Jekyll和GitPage的契合度更高一些，但是生成静态页面的速度方面不如Hexo迅速，使用方面较Hexo也略微复杂一些，这里使用Jekyll，单纯的是因为想学习一下。&lt;/p&gt;
 
 &lt;p&gt;官方网址：&lt;a href=&quot;https://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt;&lt;/p&gt;
 
@@ -66,7 +68,77 @@ bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll serve
 &lt;img src=&quot;http://sjdt.online/img/20201108_jekyll_local_server.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;使用浏览器访问一下，可以看到Jekyll为我们生成的页面：
-&lt;img src=&quot;http://sjdt.online/img/20201108_local_jekyll_server_started.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">如何开始搭建个人博客 工作生活中经常会遇到一些需要记录下来的东西，将搭建的过程记录下来以备和我遇到相同问题的同学参考。 本人使用Mac，搭建过程中主要使用到的工具如下： Github账户 + GitPage配置 Jekyll / Hexo （生成静态HTML页面） 七牛云账户 + qshell（用于存储Blog重的图片） Alfred + Powerpack + qimage-mac（用于本地截图或文档自动上传七牛云对象存储，Windows可使用AutoHotKey） vscode + Markdown All in One + Markdown Preview Github Styling (用于本地编辑markdown及实时预览) Snipaste 或其他截图工具</summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/jekyll/update/2020/11/06/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2020-11-06T19:15:25+08:00</published><updated>2020-11-06T19:15:25+08:00</updated><id>http://localhost:4000/jekyll/update/2020/11/06/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2020/11/06/welcome-to-jekyll.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+&lt;img src=&quot;http://sjdt.online/img/20201108_local_jekyll_server_started.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;3-图片配置&quot;&gt;3 图片配置&lt;/h2&gt;
+&lt;p&gt;其实上面两步完成之后，对于简单的博客来说应该就基本够用了，但是对于追求效率的重度使用者来说还需要优化一下，比如贴图的过程。一张一张手工编辑链接地址并且上传的话未免效率低下，体验不是很友好。于是考虑使用七牛云图床，一来可以提高效率，二来可以使用CDN加速提高访问速度。&lt;/p&gt;
+
+&lt;h3 id=&quot;3-1-七牛云配置&quot;&gt;3-1 七牛云配置&lt;/h3&gt;
+&lt;p&gt;需要注册七牛云账户并登陆至管理控制台，添加对象存储。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://sjdt.online/img/20201110_qiniu_new_ods.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;3-2-安装及配置qshell&quot;&gt;3-2 安装及配置qshell&lt;/h3&gt;
+
+&lt;p&gt;创建完存储空间之后，我们就可以使用七牛提供的管理控制台来上传和管理我们的图片了。也可以使用客户端，这里选择使用七牛提供的命令行工具（qshell）来方便地上传和使用图片。&lt;/p&gt;
+
+&lt;p&gt;官方安装链接在七牛的：&lt;a href=&quot;https://developer.qiniu.com/kodo/tools/1302/qshell&quot;&gt;开发者中心&lt;/a&gt;
+下载对应平台的qshell并安装即可。&lt;/p&gt;
+
+&lt;p&gt;一些需要鉴权的qshell命令需要先设置好AK（&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;AccessKey&lt;/code&gt;）和SK(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SecretKey&lt;/code&gt;)，这两个Key在七牛管理控制台右侧的密钥管理中可以找到。
+&lt;img src=&quot;http://sjdt.online/img/20201110_qiniu_miyao.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://sjdt.online/img/20201110_qiniu_aksk.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;然后使用下面的命令设置好qshell的AK和SK，这样我们就可以使用Alfred创建Workflow来调用qshell自动上传图片了。&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;qshell account ak sk name
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;其他qshell的使用请参考&lt;a href=&quot;https://developer.qiniu.com/kodo/tools/1302/qshell&quot;&gt;官方文档&lt;/a&gt;，这里不再赘述。&lt;/p&gt;
+
+&lt;h3 id=&quot;3-3-配置alfred的workflow&quot;&gt;3-3 配置Alfred的workflow&lt;/h3&gt;
+
+&lt;p&gt;这里使用&lt;a href=&quot;https://github.com/jiwenxing/qimage-mac&quot;&gt;qimage-mac&lt;/a&gt;
+详细的教程请参考&lt;a href=&quot;https://jverson.com/2017/04/28/alfred-qiniu-upload/&quot;&gt;使用 Alfred 在 markdown 中愉快的贴图&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;导入workflow之后需要修改一下热键
+&lt;img src=&quot;http://sjdt.online/img/20201110_qiniu_workflow_hotkey.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;修改一下参数配置，设置七牛的AK，SK和bucket等参数。
+&lt;img src=&quot;http://sjdt.online/img/20201110_qiniu_workflow_config.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://sjdt.online/img/20201110_qiniu_workflow_setting.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这里在执行的时候报错了，调试发现设置qshell账户的shell命令行参数数量不对，因为之前已经设置过了，这里就直接注释掉了，速度还能快一些。
+&lt;img src=&quot;http://sjdt.online/img/20201110_qiniu_uploadworkflow.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;最后，将GitHub上的仓库克隆到本地，修改之后再push就可以直接更新博客内容了。&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone git@github.com:username/username.github.io.git
+&lt;span class=&quot;c&quot;&gt;# 修改markdown文档&lt;/span&gt;
+git commit &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;your comment&quot;&lt;/span&gt;
+git push 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;本地修改可以使用&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;vscode&lt;/code&gt;或者&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;typora&lt;/code&gt;，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;vscode&lt;/code&gt;需要安装&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Markdown All in One&lt;/code&gt; 和 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Markdown Preview Github Styling&lt;/code&gt;两个插件，可以在编辑markdown文件的时候实时生成预览效果。&lt;/p&gt;
+
+&lt;h2 id=&quot;4-一些问题&quot;&gt;4. 一些问题&lt;/h2&gt;
+&lt;p&gt;搭建过程中并不是一帆风顺的，难免遇到一些问题&lt;/p&gt;
+&lt;h3 id=&quot;41-问题1gitpage上面七牛的图片显示不出&quot;&gt;4.1 问题1.GitPage上面七牛的图片显示不出。&lt;/h3&gt;
+&lt;p&gt;原因：GitPage不绑定域名时默认使用https方式提供服务，而七牛云提供的图片外链是http的。
+解决方法：GitPage使用自定义域名，并将服务方式修改为http，GitPage和七牛云都修改为Https应该也可以，留待以后验证。
+首先申请一个域名，这里选择腾讯云的域名。然后在腾讯云的管理控制台中将域名的CNAME指向修改为GitPage的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;username.github.io&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://sjdt.online/img/20201110_tx_domain_setting.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;CNAME修改后一般需要十分钟左右才能生效
+&lt;img src=&quot;http://sjdt.online/img/20201110_tx_domain_cname.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;在GitPages的setting中也将域名修改为自定义域名
+&lt;img src=&quot;http://sjdt.online/img/20201110_gitpage_custom_domain.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;另外，由于七牛的测试域名只能使用30天，所以这里把七牛云空间也一并修改为自定义域名，修改方式也是在腾讯云的管理控制台里面把域名的CNAME修改为七牛云提供的CNAME即可。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://sjdt.online/img/20201110_qiniu_domain_cname.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">如何开始搭建个人博客 工作生活中经常会遇到一些需要记录下来的东西，设想是本地编写markdown文档，文档中的各种图片资源会随时使用截图工具或者图片文件，使用Alfred或者AutoHotKey自动将图片或者剪贴板中的截图内容上传至七牛云图床，并返回markdown格式的图片链接，本地编写好之后git push到GitHub上面，使用GitPages自动生成博客。 将搭建的过程记录下来以备和我有相同需求或者遇到相同问题的同学参考。 本人使用Mac，搭建过程也以Mac过程为主，主要使用到的工具如下： Github账户 + GitPage配置 Jekyll / Hexo （生成静态HTML页面） 七牛云账户 + qshell（用于存储Blog重的图片） Alfred + Powerpack + qimage-mac（用于本地截图或文档自动上传七牛云对象存储，Windows可使用AutoHotKey） vscode + Markdown All in One + Markdown Preview Github Styling (用于本地编辑markdown及实时预览) Snipaste 或其他截图工具 一个免费或收费的域名</summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/jekyll/update/2020/11/06/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2020-11-06T19:15:25+08:00</published><updated>2020-11-06T19:15:25+08:00</updated><id>http://localhost:4000/jekyll/update/2020/11/06/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2020/11/06/welcome-to-jekyll.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
 
 &lt;p&gt;Jekyll requires blog post files to be named according to the following format:&lt;/p&gt;
 
