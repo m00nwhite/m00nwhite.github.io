@@ -5,14 +5,16 @@ date:   2020-11-07 12:00:25 +0800
 categories: jekyll update
 ---
 # 如何开始搭建个人博客
-工作生活中经常会遇到一些需要记录下来的东西，将搭建的过程记录下来以备和我遇到相同问题的同学参考。
-本人使用Mac，搭建过程中主要使用到的工具如下：
+工作生活中经常会遇到一些需要记录下来的东西，设想是本地编写markdown文档，文档中的各种图片资源会随时使用截图工具或者图片文件，使用Alfred或者AutoHotKey自动将图片或者剪贴板中的截图内容上传至七牛云图床，并返回markdown格式的图片链接，本地编写好之后git push到GitHub上面，使用GitPages自动生成博客。
+将搭建的过程记录下来以备和我有相同需求或者遇到相同问题的同学参考。
+本人使用Mac，搭建过程也以Mac过程为主，主要使用到的工具如下：
 * Github账户 + GitPage配置
 * Jekyll / Hexo （生成静态HTML页面）
 * 七牛云账户 + qshell（用于存储Blog重的图片）
 * Alfred + Powerpack + qimage-mac（用于本地截图或文档自动上传七牛云对象存储，Windows可使用AutoHotKey）
 * vscode + Markdown All in One + Markdown Preview Github Styling (用于本地编辑markdown及实时预览)
 * Snipaste 或其他截图工具
+* 一个免费或收费的域名
 
 
 ## 1. GitHub及相关配置
@@ -79,5 +81,68 @@ bundle exec jekyll serve
 ![img](http://sjdt.online/img/20201108_local_jekyll_server_started.png)
 
 
+## 3 图片配置
+其实上面两步完成之后，对于简单的博客来说应该就基本够用了，但是对于追求效率的重度使用者来说还需要优化一下，比如贴图的过程。一张一张手工编辑链接地址并且上传的话未免效率低下，体验不是很友好。于是考虑使用七牛云图床，一来可以提高效率，二来可以使用CDN加速提高访问速度。
 
+### 3-1 七牛云配置
+需要注册七牛云账户并登陆至管理控制台，添加对象存储。
+
+![img](http://sjdt.online/img/20201110_qiniu_new_ods.png)
+
+
+### 3-2 安装及配置qshell
+
+创建完存储空间之后，我们就可以使用七牛提供的管理控制台来上传和管理我们的图片了。也可以使用客户端，这里选择使用七牛提供的命令行工具（qshell）来方便地上传和使用图片。
+
+官方安装链接在七牛的：[开发者中心](https://developer.qiniu.com/kodo/tools/1302/qshell)
+下载对应平台的qshell并安装即可。
+
+一些需要鉴权的qshell命令需要先设置好AK（`AccessKey`）和SK(`SecretKey`)，这两个Key在七牛管理控制台右侧的密钥管理中可以找到。
+![img](http://sjdt.online/img/20201110_qiniu_key.png)
+
+
+![img](http://sjdt.online/img/20201110_qiniu_aksk.png)
+
+然后使用下面的命令设置好qshell的AK和SK，这样我们就可以使用Alfred创建Workflow来调用qshell自动上传图片了。
+```
+qshell account ak sk name
+```
+
+其他qshell的使用请参考[官方文档](https://developer.qiniu.com/kodo/tools/1302/qshell)，这里不再赘述。
+
+
+### 3-3 配置Alfred的workflow
+
+这里使用[qimage-mac](https://github.com/jiwenxing/qimage-mac)
+详细的教程请参考[使用 Alfred 在 markdown 中愉快的贴图](https://jverson.com/2017/04/28/alfred-qiniu-upload/)
+
+导入workflow之后需要修改一下热键
+![](http://sjdt.online/img/20201110_qiniu_workflow_hotkey.png)
+
+修改一下参数配置，设置七牛的AK，SK和bucket等参数。
+![img](http://sjdt.online/img/20201110_qiniu_workflow_config.png)
+
+![](http://sjdt.online/img/20201110_qiniu_workflow_setting.png)
+
+这里在执行的时候报错了，调试发现设置qshell账户的shell命令行参数数量不对，因为之前已经设置过了，这里就直接注释掉了，速度还能快一些。
+![](http://sjdt.online/img/20201110_qiniu_uploadworkflow.png)
+
+## 4. 一些问题
+搭建过程中并不是一帆风顺的，难免遇到一些问题
+### 4.1 问题1.GitPage上面七牛的图片显示不出。
+原因：GitPage不绑定域名时默认使用https方式提供服务，而七牛云提供的图片外链是http的。
+解决方法：GitPage使用自定义域名，并将服务方式修改为http，GitPage和七牛云都修改为Https应该也可以，留待以后验证。
+首先申请一个域名，这里选择腾讯云的域名。然后在腾讯云的管理控制台中将域名的CNAME指向修改为GitPage的`username.github.io`
+
+![](http://sjdt.online/img/20201110_tx_domain_setting.png)
+
+CNAME修改后一般需要十分钟左右才能生效
+![](http://sjdt.online/img/20201110_tx_domain_cname.png)
+
+在GitPages的setting中也将域名修改为自定义域名
+![](http://sjdt.online/img/20201110_gitpage_custom_domain.png)
+
+另外，由于七牛的测试域名只能使用30天，所以这里把七牛云空间也一并修改为自定义域名，修改方式也是在腾讯云的管理控制台里面把域名的CNAME修改为七牛云提供的CNAME即可。
+
+![](http://sjdt.online/img/20201110_qiniu_domain_cname.png)
 
