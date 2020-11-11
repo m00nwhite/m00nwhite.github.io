@@ -1,0 +1,8 @@
+# 忽略_site文件夹
+/_site/
+
+# misc
+.DS_Store
+*.zip
+*.tar
+
