@@ -82,14 +82,18 @@ def conv2Seconds(digitalTime):
 
 绘图代码
 ```python
+import matplotlib.pyplot as plt
+
 def draw():
     f = open('log_file.txt', encoding='GBK')
     i = 0
     machid = 0
     jiaoyms = []
     fig = plt.gcf()
+    # 设置宽高比
     fig.set_size_inches(100, 15)
-    fig.savefig('test2png.png', dpi=100)
+    # fig.savefig('test2png.png', dpi=100)
+    # 设置x轴和y轴以及标题显示内容
     plt.xlabel('time')
     plt.ylabel('process')
     plt.title('batch stat - 20201118 - TimeLine')
