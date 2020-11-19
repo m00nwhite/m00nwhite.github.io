@@ -4,8 +4,11 @@ title:  "使用Gitpage和Jekyll搭建个人博客"
 date:   2020-11-07 12:00:25 +0800
 categories: jekyll update
 ---
+* 目录
+{:toc}
+
 工作生活中经常会遇到一些需要记录下来的东西，设想是本地编写markdown文档，文档中的各种图片资源会随时使用截图工具或者图片文件，使用Alfred或者AutoHotKey自动将图片或者剪贴板中的截图内容上传至七牛云图床，并返回markdown格式的图片链接，本地编写好之后git push到GitHub上面，使用GitPages自动生成博客。
-将搭建的过程记录下来以备和我有相同需求或者遇到相同问题的同学参考。
+将搭建的过程记录下来以备和我有相同需求或者遇到相同问题的同学参考，本页会不断更新。
 本人使用Mac，搭建过程也以Mac过程为主，主要使用到的工具如下：
 * Github账户 + GitPage配置
 * Jekyll / Hexo （生成静态HTML页面）
@@ -137,9 +140,32 @@ git push
 
 本地修改可以使用`vscode`或者`typora`，`vscode`需要安装`Markdown All in One` 和 `Markdown Preview Github Styling`两个插件，可以在编辑markdown文件的时候实时生成预览效果。
 
-## 4. 一些问题
+## 4. 丰富你的站点
+### 4.1 Jeykll主题
+在GitHub的setting中可以更换选择主题
+
+![img](http://sjdt.online/img/20201111_change_theme.png)
+
+### 4.2 Jeykll插件
+* 使用kramdown自动生成目录树
+在`_config.yml` 配置文件中添加如下内容：
+```
+# 启用kramdown自动生成目录树
+markdown: kramdown
+```
+然后在markdown文章中需要插入目录树的地方添加：
+```
+* 目录
+{:toc}
+```
+预览效果：
+
+![](http://sjdt.online/img/20201111_document_directory.png)
+
+
+## 5. 一些问题
 搭建过程中并不是一帆风顺的，难免遇到一些问题
-### 4.1 问题1.GitPage上面七牛的图片显示不出。
+### GitPage上面七牛的图片显示不出。
 原因：GitPage不绑定域名时默认使用https方式提供服务，而七牛云提供的图片外链是http的。
 解决方法：GitPage使用自定义域名，并将服务方式修改为http，GitPage和七牛云都修改为Https应该也可以，留待以后验证。
 首先申请一个域名，这里选择腾讯云的域名。然后在腾讯云的管理控制台中将域名的CNAME指向修改为GitPage的`username.github.io`
@@ -155,4 +181,3 @@ CNAME修改后一般需要十分钟左右才能生效
 另外，由于七牛的测试域名只能使用30天，所以这里把七牛云空间也一并修改为自定义域名，修改方式也是在腾讯云的管理控制台里面把域名的CNAME修改为七牛云提供的CNAME即可。
 
 ![](http://sjdt.online/img/20201110_qiniu_domain_cname.png)
-

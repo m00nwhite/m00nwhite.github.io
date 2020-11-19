@@ -1,6 +1,56 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-11-10T20:00:57+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">m00nwhite</title><subtitle>独立开发者，全栈工程师，特许金融分析师。 专注IT技术、金融科技、前端设计和网络安全。 Independent developer, fullstack developer, CFA. focus on IT and financial technology, front-end design and network security.</subtitle><entry><title type="html">使用Gitpage和Jekyll搭建个人博客</title><link href="http://localhost:4000/jekyll/update/2020/11/07/start-to-use-gitpage.html" rel="alternate" type="text/html" title="使用Gitpage和Jekyll搭建个人博客" /><published>2020-11-07T12:00:25+08:00</published><updated>2020-11-07T12:00:25+08:00</updated><id>http://localhost:4000/jekyll/update/2020/11/07/start-to-use-gitpage</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2020/11/07/start-to-use-gitpage.html">&lt;h1 id=&quot;如何开始搭建个人博客&quot;&gt;如何开始搭建个人博客&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-11-11T21:46:57+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">m00nwhite</title><subtitle>独立开发者，全栈工程师，特许金融分析师。 专注IT技术、金融科技、前端设计和网络安全。 Independent developer, fullstack developer, CFA. focus on IT and financial technology, front-end design and network security.</subtitle><entry><title type="html">使用Alfred的workflow实现效率翻译</title><link href="http://localhost:4000/jekyll/update/2020/11/10/%E4%BD%BF%E7%94%A8Alfred%E7%9A%84workflow%E5%AE%9E%E7%8E%B0%E6%95%88%E7%8E%87%E7%BF%BB%E8%AF%91.html" rel="alternate" type="text/html" title="使用Alfred的workflow实现效率翻译" /><published>2020-11-10T20:57:25+08:00</published><updated>2020-11-10T20:57:25+08:00</updated><id>http://localhost:4000/jekyll/update/2020/11/10/%E4%BD%BF%E7%94%A8Alfred%E7%9A%84workflow%E5%AE%9E%E7%8E%B0%E6%95%88%E7%8E%87%E7%BF%BB%E8%AF%91</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2020/11/10/%E4%BD%BF%E7%94%A8Alfred%E7%9A%84workflow%E5%AE%9E%E7%8E%B0%E6%95%88%E7%8E%87%E7%BF%BB%E8%AF%91.html">&lt;h2 id=&quot;1-下载并安装效率神器alfred&quot;&gt;1. 下载并安装效率神器Alfred&lt;/h2&gt;
+&lt;p&gt;关于Alfred的使用请参考&lt;a href=&quot;&quot;&gt;这里&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;2下载有道词典的workflow&quot;&gt;2.下载有道词典的workflow&lt;/h2&gt;
+&lt;p&gt;有道词典翻译的workflow，&lt;a href=&quot;https://github.com/wensonsmith/YoudaoTranslate&quot;&gt;传送门&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;3有道智云配置&quot;&gt;3.有道智云配置&lt;/h2&gt;
+&lt;p&gt;前往&lt;a href=&quot;https://ai.youdao.com/#/&quot;&gt;有道智云&lt;/a&gt;，注册账户并登陆控制台，创建自然语言翻译实例&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://sjdt.online/img/20201110_youdao_create_instance.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;根据提示创建应用
+&lt;img src=&quot;http://sjdt.online/img/20201110_youdao_create_app.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;填写应用信息
+&lt;img src=&quot;http://sjdt.online/img/20201110_youdao_create_app2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;创建成功后即可在页面上看到应用ID和应用密钥
+&lt;img src=&quot;http://sjdt.online/img/20201110_youdao_create_app_success.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;将刚刚的应用ID和应用密钥设置到workflow的参数中：
+&lt;img src=&quot;http://sjdt.online/img/20201110_youdao_set_key.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;效果预览:
+&lt;img src=&quot;http://sjdt.online/img/20201110_youdao_workflow.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">1. 下载并安装效率神器Alfred 关于Alfred的使用请参考这里</summary></entry><entry><title type="html">使用Gitpage和Jekyll搭建个人博客</title><link href="http://localhost:4000/jekyll/update/2020/11/07/start-to-use-gitpage.html" rel="alternate" type="text/html" title="使用Gitpage和Jekyll搭建个人博客" /><published>2020-11-07T12:00:25+08:00</published><updated>2020-11-07T12:00:25+08:00</updated><id>http://localhost:4000/jekyll/update/2020/11/07/start-to-use-gitpage</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2020/11/07/start-to-use-gitpage.html">&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#1-github及相关配置&quot; id=&quot;markdown-toc-1-github及相关配置&quot;&gt;1. GitHub及相关配置&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#1-1-创建repository&quot; id=&quot;markdown-toc-1-1-创建repository&quot;&gt;1-1 创建repository&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#1-2-修改repository的setting&quot; id=&quot;markdown-toc-1-2-修改repository的setting&quot;&gt;1-2 修改repository的Setting&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#2jekyll及相关配置&quot; id=&quot;markdown-toc-2jekyll及相关配置&quot;&gt;2.Jekyll及相关配置&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#2-1-jekyll的安装&quot; id=&quot;markdown-toc-2-1-jekyll的安装&quot;&gt;2-1 jekyll的安装&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#3-图片配置&quot; id=&quot;markdown-toc-3-图片配置&quot;&gt;3 图片配置&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#3-1-七牛云配置&quot; id=&quot;markdown-toc-3-1-七牛云配置&quot;&gt;3-1 七牛云配置&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#3-2-安装及配置qshell&quot; id=&quot;markdown-toc-3-2-安装及配置qshell&quot;&gt;3-2 安装及配置qshell&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#3-3-配置alfred的workflow&quot; id=&quot;markdown-toc-3-3-配置alfred的workflow&quot;&gt;3-3 配置Alfred的workflow&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#4-丰富你的站点&quot; id=&quot;markdown-toc-4-丰富你的站点&quot;&gt;4. 丰富你的站点&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#41-jeykll主题&quot; id=&quot;markdown-toc-41-jeykll主题&quot;&gt;4.1 Jeykll主题&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#42-jeykll插件&quot; id=&quot;markdown-toc-42-jeykll插件&quot;&gt;4.2 Jeykll插件&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#5-一些问题&quot; id=&quot;markdown-toc-5-一些问题&quot;&gt;5. 一些问题&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#gitpage上面七牛的图片显示不出&quot; id=&quot;markdown-toc-gitpage上面七牛的图片显示不出&quot;&gt;GitPage上面七牛的图片显示不出。&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;p&gt;工作生活中经常会遇到一些需要记录下来的东西，设想是本地编写markdown文档，文档中的各种图片资源会随时使用截图工具或者图片文件，使用Alfred或者AutoHotKey自动将图片或者剪贴板中的截图内容上传至七牛云图床，并返回markdown格式的图片链接，本地编写好之后git push到GitHub上面，使用GitPages自动生成博客。
-将搭建的过程记录下来以备和我有相同需求或者遇到相同问题的同学参考。
+将搭建的过程记录下来以备和我有相同需求或者遇到相同问题的同学参考，本页会不断更新。
 本人使用Mac，搭建过程也以Mac过程为主，主要使用到的工具如下：&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;Github账户 + GitPage配置&lt;/li&gt;
@@ -121,9 +171,31 @@ git push
 
 &lt;p&gt;本地修改可以使用&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;vscode&lt;/code&gt;或者&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;typora&lt;/code&gt;，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;vscode&lt;/code&gt;需要安装&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Markdown All in One&lt;/code&gt; 和 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Markdown Preview Github Styling&lt;/code&gt;两个插件，可以在编辑markdown文件的时候实时生成预览效果。&lt;/p&gt;
 
-&lt;h2 id=&quot;4-一些问题&quot;&gt;4. 一些问题&lt;/h2&gt;
+&lt;h2 id=&quot;4-丰富你的站点&quot;&gt;4. 丰富你的站点&lt;/h2&gt;
+&lt;h3 id=&quot;41-jeykll主题&quot;&gt;4.1 Jeykll主题&lt;/h3&gt;
+&lt;p&gt;在GitHub的setting中可以更换选择主题&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://sjdt.online/img/20201111_change_theme.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;42-jeykll插件&quot;&gt;4.2 Jeykll插件&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;使用kramdown自动生成目录树
+在&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt; 配置文件中添加如下内容：
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# 启用kramdown自动生成目录树
+markdown: kramdown
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;然后在markdown文章中需要插入目录树的地方添加：
+```&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;目录&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;```
+预览效果：
+&lt;img src=&quot;http://sjdt.online/img/20201111_document_directory.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;5-一些问题&quot;&gt;5. 一些问题&lt;/h2&gt;
 &lt;p&gt;搭建过程中并不是一帆风顺的，难免遇到一些问题&lt;/p&gt;
-&lt;h3 id=&quot;41-问题1gitpage上面七牛的图片显示不出&quot;&gt;4.1 问题1.GitPage上面七牛的图片显示不出。&lt;/h3&gt;
+&lt;h3 id=&quot;gitpage上面七牛的图片显示不出&quot;&gt;GitPage上面七牛的图片显示不出。&lt;/h3&gt;
 &lt;p&gt;原因：GitPage不绑定域名时默认使用https方式提供服务，而七牛云提供的图片外链是http的。
 解决方法：GitPage使用自定义域名，并将服务方式修改为http，GitPage和七牛云都修改为Https应该也可以，留待以后验证。
 首先申请一个域名，这里选择腾讯云的域名。然后在腾讯云的管理控制台中将域名的CNAME指向修改为GitPage的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;username.github.io&lt;/code&gt;&lt;/p&gt;
@@ -138,7 +210,7 @@ git push
 
 &lt;p&gt;另外，由于七牛的测试域名只能使用30天，所以这里把七牛云空间也一并修改为自定义域名，修改方式也是在腾讯云的管理控制台里面把域名的CNAME修改为七牛云提供的CNAME即可。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://sjdt.online/img/20201110_qiniu_domain_cname.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">如何开始搭建个人博客 工作生活中经常会遇到一些需要记录下来的东西，设想是本地编写markdown文档，文档中的各种图片资源会随时使用截图工具或者图片文件，使用Alfred或者AutoHotKey自动将图片或者剪贴板中的截图内容上传至七牛云图床，并返回markdown格式的图片链接，本地编写好之后git push到GitHub上面，使用GitPages自动生成博客。 将搭建的过程记录下来以备和我有相同需求或者遇到相同问题的同学参考。 本人使用Mac，搭建过程也以Mac过程为主，主要使用到的工具如下： Github账户 + GitPage配置 Jekyll / Hexo （生成静态HTML页面） 七牛云账户 + qshell（用于存储Blog重的图片） Alfred + Powerpack + qimage-mac（用于本地截图或文档自动上传七牛云对象存储，Windows可使用AutoHotKey） vscode + Markdown All in One + Markdown Preview Github Styling (用于本地编辑markdown及实时预览) Snipaste 或其他截图工具 一个免费或收费的域名</summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/jekyll/update/2020/11/06/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2020-11-06T19:15:25+08:00</published><updated>2020-11-06T19:15:25+08:00</updated><id>http://localhost:4000/jekyll/update/2020/11/06/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2020/11/06/welcome-to-jekyll.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://sjdt.online/img/20201110_qiniu_domain_cname.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /></entry><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/jekyll/update/2020/11/06/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2020-11-06T19:15:25+08:00</published><updated>2020-11-06T19:15:25+08:00</updated><id>http://localhost:4000/jekyll/update/2020/11/06/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2020/11/06/welcome-to-jekyll.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
 
 &lt;p&gt;Jekyll requires blog post files to be named according to the following format:&lt;/p&gt;
 

@@ -7,8 +7,8 @@
 <meta name="generator" content="Jekyll v4.1.1" />
 <meta property="og:title" content="使用Gitpage和Jekyll搭建个人博客" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="如何开始搭建个人博客 工作生活中经常会遇到一些需要记录下来的东西，设想是本地编写markdown文档，文档中的各种图片资源会随时使用截图工具或者图片文件，使用Alfred或者AutoHotKey自动将图片或者剪贴板中的截图内容上传至七牛云图床，并返回markdown格式的图片链接，本地编写好之后git push到GitHub上面，使用GitPages自动生成博客。 将搭建的过程记录下来以备和我有相同需求或者遇到相同问题的同学参考。 本人使用Mac，搭建过程也以Mac过程为主，主要使用到的工具如下： Github账户 + GitPage配置 Jekyll / Hexo （生成静态HTML页面） 七牛云账户 + qshell（用于存储Blog重的图片） Alfred + Powerpack + qimage-mac（用于本地截图或文档自动上传七牛云对象存储，Windows可使用AutoHotKey） vscode + Markdown All in One + Markdown Preview Github Styling (用于本地编辑markdown及实时预览) Snipaste 或其他截图工具 一个免费或收费的域名" />
-<meta property="og:description" content="如何开始搭建个人博客 工作生活中经常会遇到一些需要记录下来的东西，设想是本地编写markdown文档，文档中的各种图片资源会随时使用截图工具或者图片文件，使用Alfred或者AutoHotKey自动将图片或者剪贴板中的截图内容上传至七牛云图床，并返回markdown格式的图片链接，本地编写好之后git push到GitHub上面，使用GitPages自动生成博客。 将搭建的过程记录下来以备和我有相同需求或者遇到相同问题的同学参考。 本人使用Mac，搭建过程也以Mac过程为主，主要使用到的工具如下： Github账户 + GitPage配置 Jekyll / Hexo （生成静态HTML页面） 七牛云账户 + qshell（用于存储Blog重的图片） Alfred + Powerpack + qimage-mac（用于本地截图或文档自动上传七牛云对象存储，Windows可使用AutoHotKey） vscode + Markdown All in One + Markdown Preview Github Styling (用于本地编辑markdown及实时预览) Snipaste 或其他截图工具 一个免费或收费的域名" />
+<meta name="description" content="独立开发者，全栈工程师，特许金融分析师。 专注IT技术、金融科技、前端设计和网络安全。 Independent developer, fullstack developer, CFA. focus on IT and financial technology, front-end design and network security." />
+<meta property="og:description" content="独立开发者，全栈工程师，特许金融分析师。 专注IT技术、金融科技、前端设计和网络安全。 Independent developer, fullstack developer, CFA. focus on IT and financial technology, front-end design and network security." />
 <link rel="canonical" href="http://localhost:4000/jekyll/update/2020/11/07/start-to-use-gitpage.html" />
 <meta property="og:url" content="http://localhost:4000/jekyll/update/2020/11/07/start-to-use-gitpage.html" />
 <meta property="og:site_name" content="m00nwhite" />
@@ -17,7 +17,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="使用Gitpage和Jekyll搭建个人博客" />
 <script type="application/ld+json">
-{"headline":"使用Gitpage和Jekyll搭建个人博客","url":"http://localhost:4000/jekyll/update/2020/11/07/start-to-use-gitpage.html","dateModified":"2020-11-07T12:00:25+08:00","datePublished":"2020-11-07T12:00:25+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/jekyll/update/2020/11/07/start-to-use-gitpage.html"},"description":"如何开始搭建个人博客 工作生活中经常会遇到一些需要记录下来的东西，设想是本地编写markdown文档，文档中的各种图片资源会随时使用截图工具或者图片文件，使用Alfred或者AutoHotKey自动将图片或者剪贴板中的截图内容上传至七牛云图床，并返回markdown格式的图片链接，本地编写好之后git push到GitHub上面，使用GitPages自动生成博客。 将搭建的过程记录下来以备和我有相同需求或者遇到相同问题的同学参考。 本人使用Mac，搭建过程也以Mac过程为主，主要使用到的工具如下： Github账户 + GitPage配置 Jekyll / Hexo （生成静态HTML页面） 七牛云账户 + qshell（用于存储Blog重的图片） Alfred + Powerpack + qimage-mac（用于本地截图或文档自动上传七牛云对象存储，Windows可使用AutoHotKey） vscode + Markdown All in One + Markdown Preview Github Styling (用于本地编辑markdown及实时预览) Snipaste 或其他截图工具 一个免费或收费的域名","@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"url":"http://localhost:4000/jekyll/update/2020/11/07/start-to-use-gitpage.html","headline":"使用Gitpage和Jekyll搭建个人博客","dateModified":"2020-11-07T12:00:25+08:00","datePublished":"2020-11-07T12:00:25+08:00","description":"独立开发者，全栈工程师，特许金融分析师。 专注IT技术、金融科技、前端设计和网络安全。 Independent developer, fullstack developer, CFA. focus on IT and financial technology, front-end design and network security.","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/jekyll/update/2020/11/07/start-to-use-gitpage.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="m00nwhite" /></head>
 <body><header class="site-header" role="banner">
@@ -47,9 +47,35 @@
   </header>
 
   <div class="post-content e-content" itemprop="articleBody">
-    <h1 id="如何开始搭建个人博客">如何开始搭建个人博客</h1>
+    <ul id="markdown-toc">
+  <li><a href="#1-github及相关配置" id="markdown-toc-1-github及相关配置">1. GitHub及相关配置</a>    <ul>
+      <li><a href="#1-1-创建repository" id="markdown-toc-1-1-创建repository">1-1 创建repository</a></li>
+      <li><a href="#1-2-修改repository的setting" id="markdown-toc-1-2-修改repository的setting">1-2 修改repository的Setting</a></li>
+    </ul>
+  </li>
+  <li><a href="#2jekyll及相关配置" id="markdown-toc-2jekyll及相关配置">2.Jekyll及相关配置</a>    <ul>
+      <li><a href="#2-1-jekyll的安装" id="markdown-toc-2-1-jekyll的安装">2-1 jekyll的安装</a></li>
+    </ul>
+  </li>
+  <li><a href="#3-图片配置" id="markdown-toc-3-图片配置">3 图片配置</a>    <ul>
+      <li><a href="#3-1-七牛云配置" id="markdown-toc-3-1-七牛云配置">3-1 七牛云配置</a></li>
+      <li><a href="#3-2-安装及配置qshell" id="markdown-toc-3-2-安装及配置qshell">3-2 安装及配置qshell</a></li>
+      <li><a href="#3-3-配置alfred的workflow" id="markdown-toc-3-3-配置alfred的workflow">3-3 配置Alfred的workflow</a></li>
+    </ul>
+  </li>
+  <li><a href="#4-丰富你的站点" id="markdown-toc-4-丰富你的站点">4. 丰富你的站点</a>    <ul>
+      <li><a href="#41-jeykll主题" id="markdown-toc-41-jeykll主题">4.1 Jeykll主题</a></li>
+      <li><a href="#42-jeykll插件" id="markdown-toc-42-jeykll插件">4.2 Jeykll插件</a></li>
+    </ul>
+  </li>
+  <li><a href="#5-一些问题" id="markdown-toc-5-一些问题">5. 一些问题</a>    <ul>
+      <li><a href="#gitpage上面七牛的图片显示不出" id="markdown-toc-gitpage上面七牛的图片显示不出">GitPage上面七牛的图片显示不出。</a></li>
+    </ul>
+  </li>
+</ul>
+
 <p>工作生活中经常会遇到一些需要记录下来的东西，设想是本地编写markdown文档，文档中的各种图片资源会随时使用截图工具或者图片文件，使用Alfred或者AutoHotKey自动将图片或者剪贴板中的截图内容上传至七牛云图床，并返回markdown格式的图片链接，本地编写好之后git push到GitHub上面，使用GitPages自动生成博客。
-将搭建的过程记录下来以备和我有相同需求或者遇到相同问题的同学参考。
+将搭建的过程记录下来以备和我有相同需求或者遇到相同问题的同学参考，本页会不断更新。
 本人使用Mac，搭建过程也以Mac过程为主，主要使用到的工具如下：</p>
 <ul>
   <li>Github账户 + GitPage配置</li>
@@ -170,9 +196,31 @@ git push
 
 <p>本地修改可以使用<code class="language-plaintext highlighter-rouge">vscode</code>或者<code class="language-plaintext highlighter-rouge">typora</code>，<code class="language-plaintext highlighter-rouge">vscode</code>需要安装<code class="language-plaintext highlighter-rouge">Markdown All in One</code> 和 <code class="language-plaintext highlighter-rouge">Markdown Preview Github Styling</code>两个插件，可以在编辑markdown文件的时候实时生成预览效果。</p>
 
-<h2 id="4-一些问题">4. 一些问题</h2>
+<h2 id="4-丰富你的站点">4. 丰富你的站点</h2>
+<h3 id="41-jeykll主题">4.1 Jeykll主题</h3>
+<p>在GitHub的setting中可以更换选择主题</p>
+
+<p><img src="http://sjdt.online/img/20201111_change_theme.png" alt="img" /></p>
+
+<h3 id="42-jeykll插件">4.2 Jeykll插件</h3>
+<ul>
+  <li>使用kramdown自动生成目录树
+在<code class="language-plaintext highlighter-rouge">_config.yml</code> 配置文件中添加如下内容：
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 启用kramdown自动生成目录树
+markdown: kramdown
+</code></pre></div>    </div>
+    <p>然后在markdown文章中需要插入目录树的地方添加：
+```</p>
+  </li>
+  <li>目录</li>
+</ul>
+<p>```
+预览效果：
+<img src="http://sjdt.online/img/20201111_document_directory.png" alt="" /></p>
+
+<h2 id="5-一些问题">5. 一些问题</h2>
 <p>搭建过程中并不是一帆风顺的，难免遇到一些问题</p>
-<h3 id="41-问题1gitpage上面七牛的图片显示不出">4.1 问题1.GitPage上面七牛的图片显示不出。</h3>
+<h3 id="gitpage上面七牛的图片显示不出">GitPage上面七牛的图片显示不出。</h3>
 <p>原因：GitPage不绑定域名时默认使用https方式提供服务，而七牛云提供的图片外链是http的。
 解决方法：GitPage使用自定义域名，并将服务方式修改为http，GitPage和七牛云都修改为Https应该也可以，留待以后验证。
 首先申请一个域名，这里选择腾讯云的域名。然后在腾讯云的管理控制台中将域名的CNAME指向修改为GitPage的<code class="language-plaintext highlighter-rouge">username.github.io</code></p>
@@ -188,7 +236,6 @@ git push
 <p>另外，由于七牛的测试域名只能使用30天，所以这里把七牛云空间也一并修改为自定义域名，修改方式也是在腾讯云的管理控制台里面把域名的CNAME修改为七牛云提供的CNAME即可。</p>
 
 <p><img src="http://sjdt.online/img/20201110_qiniu_domain_cname.png" alt="" /></p>
-
 
   </div><a class="u-url" href="/jekyll/update/2020/11/07/start-to-use-gitpage.html" hidden></a>
 </article>
