@@ -51,47 +51,53 @@ description :代码段描述,输入名字后编辑器显示的提示信息。
 * 字符串间如果值里包含特殊字符需要 \ 进行转义.
 
 
-The following variables can be used:
+下面这些变量可以在snipates中使用:
 
-    TM_SELECTED_TEXT The currently selected text or the empty string
-    TM_CURRENT_LINE The contents of the current line
-    TM_CURRENT_WORD The contents of the word under cursor or the empty string
-    TM_LINE_INDEX The zero-index based line number
-    TM_LINE_NUMBER The one-index based line number
-    TM_FILENAME The filename of the current document
-    TM_FILENAME_BASE The filename of the current document without its extensions
-    TM_DIRECTORY The directory of the current document
-    TM_FILEPATH The full file path of the current document
-    CLIPBOARD The contents of your clipboard
-    WORKSPACE_NAME The name of the opened workspace or folder
+```
+TM_SELECTED_TEXT The currently selected text or the emptstring
+TM_CURRENT_LINE The contents of the current line
+TM_CURRENT_WORD The contents of the word under cursor othe empty string
+TM_LINE_INDEX The zero-index based line number
+TM_LINE_NUMBER The one-index based line number
+TM_FILENAME The filename of the current document
+TM_FILENAME_BASE The filename of the current documenwithout its extensions
+TM_DIRECTORY The directory of the current document
+TM_FILEPATH The full file path of the current document
+CLIPBOARD The contents of your clipboard
+WORKSPACE_NAME The name of the opened workspace or folder
+```
 
-For inserting the current date and time:
+当前日期和时间:
+```
+CURRENT_YEAR The current year
+CURRENT_YEAR_SHORT The current year’s last two digits
+CURRENT_MONTH The month as two digits (example ‘02’)
+CURRENT_MONTH_NAME The full name of the month (example ‘July’)
+CURRENT_MONTH_NAME_SHORT The short name of the month (example ‘Jul’)
+CURRENT_DATE The day of the month
+CURRENT_DAY_NAME The name of day (example ‘Monday’)
+CURRENT_DAY_NAME_SHORT The short name of the day (example ‘Mon’)
+CURRENT_HOUR The current hour in 24-hour clock format
+CURRENT_MINUTE The current minute
+CURRENT_SECOND The current second
+```
 
-    CURRENT_YEAR The current year
-    CURRENT_YEAR_SHORT The current year’s last two digits
-    CURRENT_MONTH The month as two digits (example ‘02’)
-    CURRENT_MONTH_NAME The full name of the month (example ‘July’)
-    CURRENT_MONTH_NAME_SHORT The short name of the month (example ‘Jul’)
-    CURRENT_DATE The day of the month
-    CURRENT_DAY_NAME The name of day (example ‘Monday’)
-    CURRENT_DAY_NAME_SHORT The short name of the day (example ‘Mon’)
-    CURRENT_HOUR The current hour in 24-hour clock format
-    CURRENT_MINUTE The current minute
-    CURRENT_SECOND The current second
+针对当前语言，插入单行或多行注释:
+```
+BLOCK_COMMENT_START Example output: in PHP /* or in HTML <!–
+BLOCK_COMMENT_END Example output: in PHP */ or in HTML -->
+LINE_COMMENT Example output: in PHP // or in HTML <!-- -->
+```
 
-For inserting line or block comments, honoring the current language:
-
-    BLOCK_COMMENT_START Example output: in PHP /* or in HTML <!–
-    BLOCK_COMMENT_END Example output: in PHP */ or in HTML -->
-    LINE_COMMENT Example output: in PHP // or in HTML <!-- -->
-
+栗子：
+```
 "c_header": {
         "prefix": "c_header",
         "body": [
             "/**",
-            " * Copyright © 2019 Silvester. All rights reserved.",
+            " * Copyright © 2019 Moonwhite. All rights reserved.",
             " * ",
-            " * @author: Silvester",
+            " * @author: Moonwhite",
             " * @date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE ",
             " */",
             "#include <stdio.h>",
@@ -106,10 +112,14 @@ For inserting line or block comments, honoring the current language:
         ]
         // "description": "Log output to console"
     }
+```
+
+生成的效果：
+```c
 /**
- * Copyright © 2019 Silvester. All rights reserved.
+ * Copyright © 2019 Moonwhite. All rights reserved.
  *
- * @author: Silvester
+ * @author: Moonwhite
  * @date: 2019-05-20
  */
 #include <stdio.h>
@@ -121,3 +131,4 @@ int main() {
     
     return 0;
 }
+```
