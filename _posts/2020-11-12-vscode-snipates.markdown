@@ -95,7 +95,7 @@ LINE_COMMENT Example output: in PHP // or in HTML <!-- -->
         "prefix": "c_header",
         "body": [
             "/**",
-            " * Copyright © 2019 Moonwhite. All rights reserved.",
+            " * Copyright © 2020 Moonwhite. All rights reserved.",
             " * ",
             " * @author: Moonwhite",
             " * @date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE ",
@@ -117,10 +117,10 @@ LINE_COMMENT Example output: in PHP // or in HTML <!-- -->
 生成的效果：
 ```c
 /**
- * Copyright © 2019 Moonwhite. All rights reserved.
+ * Copyright © 2020 Moonwhite. All rights reserved.
  *
  * @author: Moonwhite
- * @date: 2019-05-20
+ * @date: 2020-11-12
  */
 #include <stdio.h>
 #include <stdlib.h>
