@@ -1,0 +1,68 @@
+---
+layout: post
+title:  "Mac本地Apache开启VirtualHost"
+date:   2020-11-22 14:57:25 +0800
+categories: php web
+---
+Mac环境的php开发环境搭建推荐另一篇[文章](http://moonwhite.site/php/web/2020/11/12/phpstorm-and-mamp-development.html)
+这里仅作记录备忘一下。
+
+Mac自带Apache服务，配置文件在`/etc/apache2/httpd.conf` 
+
+把默认的下面两行注释放开
+```bash
+LoadModule userdir_module libexec/apache2/mod_userdir.so
+Include /private/etc/apache2/extra/httpd-userdir.conf
+```
+
+修改默认目录，默认目录在/Library/WebServer/Documents下：
+```
+#DocumentRoot "/Library/WebServer/Documents"
+DocumentRoot "/Users/yiny/Sites"
+```
+
+添加如下内容：
+```bash
+<Directory "/Users/yiny/Sites">
+    Options Indexes FollowSymLinks
+    AllowOverride None
+    Require all granted
+</Directory>
+
+<VirtualHost *:80>
+ServerName sjdt.online.test
+DocumentRoot "/Users/yiny/Sites/sjdt.online"
+DirectoryIndex index.html index.php
+ <Directory "/Users/yiny/Sites/sjdt.online">
+  Options -Indexes +FollowSymlinks
+  AllowOverride All
+  Require all granted
+ </Directory>
+</VirtualHost>
+```
+启动停止命令：
+```bash
+# 启动
+sudo systemctl start
+
+# 停止
+sudo systemctl stop
+
+# 重启
+sudo systemctl restart
+```
+
+## Mac本地安装配置PHP
+安装php
+```bash
+brew install php
+```
+
+```bash
+brew services start php
+```
+php.ini 配置文件位置：
+```
+/usr/local/etc/php/7.4
+```
+
