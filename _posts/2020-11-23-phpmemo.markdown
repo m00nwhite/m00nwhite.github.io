@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "PHP 学习笔记"
+title:  "PHP 笔记"
 date:   2020-11-23 20:09:02 +0800
 categories: php web
 ---

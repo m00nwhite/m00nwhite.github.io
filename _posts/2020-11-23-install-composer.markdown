@@ -34,7 +34,11 @@ chmod a+x install.sh
 ```
 
 执行之后会看到本地目录下载好了`composer.phar`, 
-然后执行`mv composer.phar /usr/local/bin/composer` 使得composer可以在任意目录使用，这样就安装完成了。
+然后执行
+```bash
+mv composer.phar /usr/local/bin/composer
+``` 
+使得composer可以在任意目录使用，这样就安装完成了。
 
 敲入`composer`命令，或者`composer -V`来确认composer是否安装成功。
 
