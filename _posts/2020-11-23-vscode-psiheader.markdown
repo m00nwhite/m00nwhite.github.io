@@ -124,7 +124,7 @@ categories: vscode
     ]
 ```
 
-效果：新建一个markdown文件，然后使用热键<kbd>option</kbd> + <kbd>contrl</kbd> + <kbd>H</kbd> 来自动添加文件头
+效果：新建一个markdown文件，然后连按两次热键：<kbd>option</kbd> + <kbd>contrl</kbd> + <kbd>H</kbd> 来自动添加文件头。
 ![](http://sjdt.online/img/20201123_spiheader.gif)
 
 
