@@ -14,7 +14,7 @@ Mac自带Apache服务，配置文件在`/etc/apache2/httpd.conf`
 LoadModule userdir_module libexec/apache2/mod_userdir.so
 Include /private/etc/apache2/extra/httpd-userdir.conf
 ```
-
+. 
 修改默认目录，默认目录在/Library/WebServer/Documents下：
 ```
 #DocumentRoot "/Library/WebServer/Documents"
