@@ -5,6 +5,7 @@ date:   2020-11-23 14:10:02 +0800
 categories: php web
 ---
 
+# 1. Composer 安装
 可以复制如下脚本保存并本地执行，用来下载composer.phar文件
 ```bash
 #!/bin/sh
@@ -36,5 +37,12 @@ chmod a+x install.sh
 然后执行`mv composer.phar /usr/local/bin/composer` 使得composer可以在任意目录使用，这样就安装完成了。
 
 敲入`composer`命令，或者`composer -V`来确认composer是否安装成功。
+
+
+# 2. PHPStorm配置Composer
+Preference -> Languages & Frameworks -> PHP -> Composer
+
+![](http://sjdt.online/img/20201123_composer.png)
+
 
 
