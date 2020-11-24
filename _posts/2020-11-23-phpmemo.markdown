@@ -5,5 +5,70 @@ date:   2020-11-23 20:09:02 +0800
 categories: php web
 ---
 
+## 文件操作
+
+* 读取文件内容
+```php
+# 方法1：直接readfile
+echo readfile("test.txt");
+
+# 方法2: fopen -> fread -> fclose
+$myfile = fopen("test.txt","r") or die("Unable to open file.");
+echo fread($myfile, filesize('test.txt'));
+fclose($myfile);
+
+# 方法3: fopen后循环fgets每次读取一行，也可以fgetc每次读取单字符
+$myfile = fopen("test.txt","r") or die("Unable to open file.");
+while ( !feof($myfile) ){
+    echo fgets($myfile) . "<br>";
+}
+fclose($myfile);
+
+```
+
+
+* 写入文件内容
+```php
+$myfile = fwrite("test.txt","w") or die("Unable to open file.");
+$txt = "Write file test\n";
+fwrite($myfile, $txt);
+fwrite($myfile, "Write by php\n");
+fclose($myfile);
+```
+
+
+
+## Cookie 操作
+```php
+# 设置cookie
+setcookie("user", "Mooonwhite", time()+3600);
+
+# 获取cookie
+if (isset($_COOKIE["user"])) {
+    echo "Welcome ".$_COOKIE["user"]. "! <br/>";
+}
+else {
+    echo "Welcome guest!<br/>";
+}
+
+# 删除cookie（设置超市时间为一小时之前）。
+setcookie("user", "", time()-3600);
+```
+
+
+## 时间日期
+
+* 获取时间和日期
+```php
+# 获取格式化日期时间字符串
+$dt = date("Y-m-d h:i:sa");
+echo $dt;
+
+# 获取19700101到现在的秒数（时间戳）。
+$tm = time();
+echo $tm;
+
+```
+
 
 
