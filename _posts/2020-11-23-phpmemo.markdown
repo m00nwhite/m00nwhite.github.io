@@ -8,6 +8,7 @@ categories: php web
 ## 文件操作
 
 * 读取文件内容
+
 ```php
 # 方法1：直接readfile
 echo readfile("test.txt");
