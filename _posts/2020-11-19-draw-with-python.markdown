@@ -151,4 +151,4 @@ def draw():
 ```
 
 ### 执行结果
-![](http://sjdt.online/img/20201119_python_plot1.png)
+![](http://yinyang.space/img/20201119_python_plot1.png)

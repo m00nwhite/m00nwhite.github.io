@@ -13,7 +13,7 @@ categories: vscode
 
 ## 设置
 <kbd>command</kbd> + <kbd>shift</kbd> + <kbd>P</kbd> 打开命令面板后输入settings，选择打开设置，打开`settings.json`文件
-![](http://sjdt.online/img/20201123_vscode_psi1.png)
+![](http://yinyang.space/img/20201123_vscode_psi1.png)
 
 在`settings.json`中添加如下内容后保存：
 ```json
@@ -125,6 +125,6 @@ categories: vscode
 ```
 
 效果：新建一个markdown文件，然后连按两次热键：<kbd>option</kbd> + <kbd>contrl</kbd> + <kbd>H</kbd> 来自动添加文件头。
-![](http://sjdt.online/img/20201123_spiheader.gif)
+![](http://yinyang.space/img/20201123_spiheader.gif)
 
 

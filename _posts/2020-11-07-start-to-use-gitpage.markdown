@@ -23,16 +23,16 @@ categories: jekyll update
 ### 1-1 创建repository
 登陆Github，并新建一个repository，这里需要注意一下的是需要按照`username.github.io`格式来创建repository，这样后面才能够使用`https://username.github.io`这样的URL来访问GitPage。
 
-![img](http://sjdt.online/img/create_github_repo.png)
+![img](http://yinyang.space/img/create_github_repo.png)
 
 ### 1-2 修改repository的Setting
 找到Repository的Setting tab页面，如下图：
-![img](http://sjdt.online/img/20201108_github_setting.png)
+![img](http://yinyang.space/img/20201108_github_setting.png)
 
 
 向下一直拖动到GitHub Pages页面，启用GitPages，这里可以设置GitPages使用哪个分支，修改显示的主题风格，以及修改为自定义的域名。
 
-![img](http://sjdt.online/img/20201108_github_page_setting.png)
+![img](http://yinyang.space/img/20201108_github_page_setting.png)
 
 至此，基于GitPages的一个免费个人博客就已经搭建成功了，我们在代码中可以直接编辑html，然后访问username.github.io即可看到个人博客网站的显示结果。
 比如将以下代码保存成index.html放到repository的根目录：
@@ -49,7 +49,7 @@ categories: jekyll update
 ```
 然后访问`username.github.io` 即可看到显示结果
 
-![img](http://sjdt.online/img/20201108_github_test_index.png)
+![img](http://yinyang.space/img/20201108_github_test_index.png)
 
 
 
@@ -61,7 +61,7 @@ Jekyll是一个的免费Blog生成框架，可以运行在GitHub Pages上，详�
 ### 2-1 jekyll的安装
 先来看一下官方安装教程，简单得只有一张图：
 
-![](http://sjdt.online/img/20201108_jekyll_install.png)
+![](http://yinyang.space/img/20201108_jekyll_install.png)
 
 需要安装bundler，gem
 ```bash
@@ -77,10 +77,10 @@ bundle exec jekyll serve
 ```
 
 执行了上面的命令之后，jekyll就为你在本地4000端口创建了一个博客服务。
-![img](http://sjdt.online/img/20201108_jekyll_local_server.png)
+![img](http://yinyang.space/img/20201108_jekyll_local_server.png)
 
 使用浏览器访问一下，可以看到Jekyll为我们生成的页面：
-![img](http://sjdt.online/img/20201108_local_jekyll_server_started.png)
+![img](http://yinyang.space/img/20201108_local_jekyll_server_started.png)
 
 
 ## 3 图片配置
@@ -89,7 +89,7 @@ bundle exec jekyll serve
 ### 3-1 七牛云配置
 需要注册七牛云账户并登陆至管理控制台，添加对象存储。
 
-![img](http://sjdt.online/img/20201110_qiniu_new_ods.png)
+![img](http://yinyang.space/img/20201110_qiniu_new_ods.png)
 
 
 ### 3-2 安装及配置qshell
@@ -100,11 +100,11 @@ bundle exec jekyll serve
 下载对应平台的qshell并安装即可。
 
 一些需要鉴权的qshell命令需要先设置好AK（`AccessKey`）和SK(`SecretKey`)，这两个Key在七牛管理控制台右侧的密钥管理中可以找到。
-![](http://sjdt.online/img/20201110_qiniu_miyao.png)
+![](http://yinyang.space/img/20201110_qiniu_miyao.png)
 
 
 
-![img](http://sjdt.online/img/20201110_qiniu_aksk.png)
+![img](http://yinyang.space/img/20201110_qiniu_aksk.png)
 
 然后使用下面的命令设置好qshell的AK和SK，这样我们就可以使用Alfred创建Workflow来调用qshell自动上传图片了。
 ```
@@ -120,15 +120,15 @@ qshell account ak sk name
 详细的教程请参考[使用 Alfred 在 markdown 中愉快的贴图](https://jverson.com/2017/04/28/alfred-qiniu-upload/)
 
 导入workflow之后需要修改一下热键
-![](http://sjdt.online/img/20201110_qiniu_workflow_hotkey.png)
+![](http://yinyang.space/img/20201110_qiniu_workflow_hotkey.png)
 
 修改一下参数配置，设置七牛的AK，SK和bucket等参数。
-![img](http://sjdt.online/img/20201110_qiniu_workflow_config.png)
+![img](http://yinyang.space/img/20201110_qiniu_workflow_config.png)
 
-![](http://sjdt.online/img/20201110_qiniu_workflow_setting.png)
+![](http://yinyang.space/img/20201110_qiniu_workflow_setting.png)
 
 这里在执行的时候报错了，调试发现设置qshell账户的shell命令行参数数量不对，因为之前已经设置过了，这里就直接注释掉了，速度还能快一些。
-![](http://sjdt.online/img/20201110_qiniu_uploadworkflow.png)
+![](http://yinyang.space/img/20201110_qiniu_uploadworkflow.png)
 
 最后，将GitHub上的仓库克隆到本地，修改之后再push就可以直接更新博客内容了。
 ```bash
@@ -144,7 +144,7 @@ git push
 ### 4.1 Jeykll主题
 在GitHub的setting中可以更换选择主题
 
-![img](http://sjdt.online/img/20201111_change_theme.png)
+![img](http://yinyang.space/img/20201111_change_theme.png)
 
 ### 4.2 Jeykll插件
 * 使用kramdown自动生成目录树
@@ -160,7 +160,7 @@ markdown: kramdown
 ```
 预览效果：
 
-![](http://sjdt.online/img/20201111_document_directory.png)
+![](http://yinyang.space/img/20201111_document_directory.png)
 
 
 ## 5. 一些问题
@@ -170,14 +170,14 @@ markdown: kramdown
 解决方法：GitPage使用自定义域名，并将服务方式修改为http，GitPage和七牛云都修改为Https应该也可以，留待以后验证。
 首先申请一个域名，这里选择腾讯云的域名。然后在腾讯云的管理控制台中将域名的CNAME指向修改为GitPage的`username.github.io`
 
-![](http://sjdt.online/img/20201110_tx_domain_setting.png)
+![](http://yinyang.space/img/20201110_tx_domain_setting.png)
 
 CNAME修改后一般需要十分钟左右才能生效
-![](http://sjdt.online/img/20201110_tx_domain_cname.png)
+![](http://yinyang.space/img/20201110_tx_domain_cname.png)
 
 在GitPages的setting中也将域名修改为自定义域名
-![](http://sjdt.online/img/20201110_gitpage_custom_domain.png)
+![](http://yinyang.space/img/20201110_gitpage_custom_domain.png)
 
 另外，由于七牛的测试域名只能使用30天，所以这里把七牛云空间也一并修改为自定义域名，修改方式也是在腾讯云的管理控制台里面把域名的CNAME修改为七牛云提供的CNAME即可。
 
-![](http://sjdt.online/img/20201110_qiniu_domain_cname.png)
+![](http://yinyang.space/img/20201110_qiniu_domain_cname.png)

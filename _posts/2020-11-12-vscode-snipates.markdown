@@ -9,7 +9,7 @@ categories: php web
 
 Code -> 首选项 -> 用户片段
 
-![](http://sjdt.online/img/20201112_vscode_snippet_1.png)
+![](http://yinyang.space/img/20201112_vscode_snippet_1.png)
 
 之后Code为我们生成了一个`filename.code-snippets`的json文件，内容如下：
 
