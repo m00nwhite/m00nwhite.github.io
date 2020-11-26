@@ -1,0 +1,30 @@
+---
+layout: post
+title:  "pycharm搭建Django开发环境"
+date:   2020-11-26 04:17:36 +0800
+categories: web python django
+---
+
+
+# 搭建开发环境
+pycharm 中新建工程，选择Existing interpreter。
+![](http://yinyang.space/img/20201126_django1.png)
+
+
+如果没有Django环境，Pycharm会自动下载安装：
+![](http://yinyang.space/img/20201126_django2.png)
+
+设置一下项目的interpreter，如果设置过了可省略
+![](http://yinyang.space/img/20201126_django3.png)
+
+
+运行/调试配置，勾选run browser选项：
+![](http://yinyang.space/img/20201126_django5.png)
+
+
+点击Pycharm右上角的运行按钮，或者使用快捷键<kbd>Control</kbd> + <kbd>R</kbd> 运行项目，正常就可以看到下面的厨师画面了：
+![](http://yinyang.space/img/20201126_django6.png)
+
+
+如果出现了下面的错误，在settings.py文件中加上`import os`就可以了
+![](http://yinyang.space/img/20201126_django4.png)
