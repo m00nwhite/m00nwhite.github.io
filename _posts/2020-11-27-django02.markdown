@@ -58,4 +58,17 @@ django-admin.py startapp TestModel
 安装mysqlclient
 ![](http://yinyang.space/img/20201127_django2_2.png)
 
+这里踩了一个大坑，`pip install mysqlclient` 后报错了
+```
+Collecting mysqlclient
+  Using cached mysqlclient-2.0.1.tar.gz (87 kB)
+      ......
+      File "/private/var/folders/7p/r7xrt8r50l1cd6dh0dtz2n940000gp/T/pycharm-packaging/mysqlclient/setup_posix.py", line 65, in get_config
+        libs = mysql_config("libs")
+      File "/private/var/folders/7p/r7xrt8r50l1cd6dh0dtz2n940000gp/T/pycharm-packaging/mysqlclient/setup_posix.py", line 31, in mysql_config
+        raise OSError("{} not found".format(_mysql_config_path))
+    OSError: mysql_config not found
+    ----------------------------------------
+ERROR: Command errored out with exit status 1: python setup.py egg_info Check the logs for full command output.
 
+```
