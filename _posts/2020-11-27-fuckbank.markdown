@@ -23,41 +23,87 @@ categories: bank
 
 ## 如何下载安装手机银行
 在哪能买到？手机银行APP就可以。下面扫码下载：
+
 ![](http://yinyang.space/img/20201127_bank_qr.png)
 
+
+
+
 微信扫描二维码后点击右上角的 ... ，然后选择在浏览器打开：
+
 ![](http://yinyang.space/img/20201127_bank00.png)
 
-或者也可以从官网-> [盛京银行官网网站](http://www.shengjingbank.com.cn/) 这里下载，如下图：
+
+
+
+当然也可以从官网-> [盛京银行官网网站](http://www.shengjingbank.com.cn/) 下载：
+
 ![](http://yinyang.space/img/20201127_bank1.png)
+
+
 
 ## 如何购买
 ### 1. 进入手机银行后点击 **存款产品**
 ![](http://yinyang.space/img/20201127_bank01.png)
 
+
+
+
 ### 2. 点击 **结构性存款**
 ![](http://yinyang.space/img/20201127_bank2.png)
+
+
+
+
 
 ### 3. 选择一款适合您的产品，单击即可到购买页面
 ![](http://yinyang.space/img/20201127_bank03.png)
 
+
+
+
+
 ### 4. 购买页面，点击立即购买
 ![](http://yinyang.space/img/20201127_bank04.png)
+
+
+
+
 
 ### 5. 填好购买金额、推荐人员工号码、勾选已阅读后下一步
 ![](http://yinyang.space/img/20201127_bank05.png)
 
+
+
+
+
 ### 6. 大功告成，购买成功
 ![](http://yinyang.space/img/20201127_bank06.png)
+
+
+
+
 
 ### 可以在 **我的结构性存款** 中查看刚刚买完的存款
 ![](http://yinyang.space/img/20201127_bank07.png)
 
+
+
+
+
 ### 刚刚购买完由于还处于募集期，可以在“在途产品”中找到。
 ![](http://yinyang.space/img/20201127_bank08.png)
 
+
+
+
+
 ### 点击进入后可以看到在途产品的详细信息：
 ![](http://yinyang.space/img/20201127_bank09.png)
+
+
+
+
 
 # 最后，如果您输入了我的推荐人工号009260，请一定加我WX联系我领取属于您的推荐奖励！！！
 ![](http://yinyang.space/img/20201127_myqr.png)
