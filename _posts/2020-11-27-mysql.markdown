@@ -1,0 +1,85 @@
+---
+layout: post
+title:  "常用MySQL操作及问题备忘"
+date:   2020-11-27 08:50:30 +0800
+categories: web mysql
+---
+
+## 常见安装配置问题
+
+### 安装
+ubuntu安装命令：
+```bash
+sudo apt-get install mysql-server mysql-common
+```
+
+安装后使用/etc/mysql/debian.cnf中记录的用户（debian-sys-maint）和密码登陆
+```
+$ mysql -u debian-sys-maint -p
+```
+
+### 常见登陆问题
+#### 1. 不可以使用密码登陆的问题
+```sql
+--修改root用户属性
+update mysql.user set authentication_string=PASSWORD('yourpassword'),plugin='mysql_native_password' where user='root';
+
+-- （1）修改host允许远程登录
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'yourpassword' WITH GRANT OPTION;
+
+-- （2）修改验证方式允许密码登录
+update mysql.user set authentication_string=PASSWORD('yourpassword'),plugin='mysql_native_password' where user='root';
+```
+注意：！！！上面（1）和(2)都需要执行，而且需要按顺序执行
+
+#### 2. 连接报10060错误
+使用服务商提供的服务器还需要在服务上控制台开通3306端口的入站规则（否则连接会报10060错误），比如腾讯云的在实例->安全组->入站规则里面，选择添加规则。
+```
+0.0.0.0/0    TCP:3306    允许
+```
+#### 2. 连接报10061错误
+解决方法：修改配置文件mysqld.cnf ，注释掉下面这行：
+`bind-address          = 127.0.0.1`
+
+**上面允许远程登陆、使用默认3306端口和解除绑定IP等配置是存在一定安全隐患和风险的，生产环境不建议这样使用。**
+
+
+## 常用SQL操作
+```sql
+-- 创建数据库
+create database dbname default charset=utf8;
+
+-- 创建用户并授权;
+use mysql;
+CREATE USER 'username'@'%' IDENTIFIED BY 'yourpassword';
+
+-- 为用户添加权限
+GRANT ALL ON pwnner.* TO 'pwnner'@'%';
+
+```
+
+表相关操作
+```sql
+-- 建表
+DROP TABLE IF EXISTS `yx_user`;
+CREATE TABLE `yx_user`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `create_time` int(11) NOT NULL DEFAULT 0,
+  `update_time` int(11) NOT NULL DEFAULT 0,
+  `delete_time` int(11) NULL DEFAULT NULL,
+  `time` int(11) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = MyISAM AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- 修改表结构 
+ALTER TABLE `yx_user` ADD COLUMN `exam_cnt_s` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '10道' COMMENT '考试模式单选题数量';
+
+-- 建索引
+CREATE INDEX yx_user_index ON yx_user (`cid`,`username`);
+
+```
+
+
+

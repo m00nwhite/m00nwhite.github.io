@@ -1,0 +1,61 @@
+---
+layout: post
+title:  "Django笔记：3.创建模型"
+date:   2020-11-27 09:43:46 +0800
+categories: web python django
+---
+
+## 建库建用户
+```sql
+-- 建库
+create database djtest default charset=utf8;
+
+-- 创建用户
+CREATE USER 'djadmin'@'%' IDENTIFIED BY 'yourpasswd';
+
+-- 为用户添加权限
+GRANT ALL ON djtest.* TO 'djadmin'@'%';
+```
+
+## 项目配置
+在项目的 settings.py 文件中找到 DATABASES 配置项，将其信息修改为：
+```
+DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # }
+    'default' : {
+        'ENGINE': 'django.db.backends.mysql',    # 数据库引擎
+        'NAME': 'djtest', # 数据库名称
+        'HOST': '127.0.0.1', # 数据库地址，本机 ip 地址 127.0.0.1
+        'PORT': 3316, # 端口
+        'USER': 'djadmin',  # 数据库用户名
+        'PASSWORD': 'yourpasswd', # 数据库密码
+    }
+}
+```
+
+接下来，告诉 Django 使用 pymysql 模块连接 mysql 数据库：
+```python
+# 在与 settings.py 同级目录下的 __init__.py 中引入模块和进行配置
+import pymysql
+pymysql.install_as_MySQLdb()
+```
+
+如果没有pymysql模块，请使用pip安装
+![](http://yinyang.space/img/20201127_django2_1.png)
+
+
+## 定义模型
+### 创建app
+Django中如果要使用模型，必须先创建一个app，使用下面命令创建一个TestModel的app
+```bash
+django-admin.py startapp TestModel   
+```
+
+
+安装mysqlclient
+![](http://yinyang.space/img/20201127_django2_2.png)
+
+
