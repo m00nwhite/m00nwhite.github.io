@@ -21,10 +21,7 @@
 title: m00nwhite
 email: moonwh173@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  独立开发者，全栈工程师，特许金融分析师。
-  专注IT技术、金融科技、前端设计和网络安全。
-  Independent developer, fullstack developer, CFA.
-  focus on IT and financial technology, front-end design and network security.
+  Stay Hungry， Stay Foolish.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: moonwhite
