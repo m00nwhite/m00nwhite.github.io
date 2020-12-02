@@ -5,11 +5,10 @@ date:   2020-12-02 02:47:42 +0800
 categories: web django python template
 ---
 
-
 # 1. 模版变量笔记：
 ## 1.1. 在模版中使用变量，需要将变量放到`{{ 变量 }}`中。
 ## 1.2. 如果想要访问对象的属性，那么可以通过`对象.属性名`来进行访问。
-    ```python
+```python
     class Person(object):
         def __init__(self,username):
             self.username = username
@@ -17,83 +16,99 @@ categories: web django python template
     context = {
         'person': p
     }
-    ```
+ ```
 以后想要访问`person`的`username`，那么就是通过`person.username`来访问。
 ## 1.3. 如果想要访问一个字典的key对应的value，那么只能通过`字典.key`的方式进行访问，不能通过`中括号[]`的形式进行访问。
-    ```python
+```python
     context = {
         'person': {
             'username':'zhiliao'
         }
     }
-    ```
+```
 那么以后在模版中访问`username`。就是以下代码`person.username`
 ## 1.4. 因为在访问字典的`key`时候也是使用`点.`来访问，因此不能在字典中定义字典本身就有的属性名当作`key`，否则字典的那个属性将编程字典中的key了。
-    ```python
+```python
     context = {
         'person': {
             'username':'zhiliao',
             'keys':'abc'
         }
     }
-    ```
+```
 以上因为将`keys`作为`person`这个字典的`key`了。因此以后在模版中访问`person.keys`的时候，返回的不是这个字典的所有key，而是对应的值。
 ## 1.5. 如果想要访问列表或者元组，那么也是通过`点.`的方式进行访问，不能通过`中括号[]`的形式进行访问。这一点和python中是不一样的。示例代码如下：
-    ```python
+```python
     {{ persons.1 }}
-    ```
+```
 
 # 2. if语句笔记：
-* if标签有闭合标签。就是`{% endif %}`。
+* if标签有闭合标签endif。
 * if标签的判断运算符，就跟python中的判断运算符是一样的。`==、!=、<、<=、>、>=、in、not in、is、is not`这些都可以使用。
 * 还可以使用`elif`以及`else`等标签。
 
 
 # 3. `for...in...`标签：
 `for...in...`类似于`Python`中的`for...in...`。可以遍历列表、元组、字符串、字典等一切可以遍历的对象。示例代码如下：
+
 ```python
+ {％ raw ％} 
 {% for person in persons %}
 <p>{{ person.name }}</p>
 {% endfor %}
+ {％ endraw ％} 
+
 ```
 
 如果想要反向遍历，那么在遍历的时候就加上一个`reversed`。示例代码如下：
 ```python
+ {％ raw ％} 
+
 {% for person in persons reversed %}
 <p>{{ person.name }}</p>
 {% endfor %}
+ {％ endraw ％} 
+
 ```
 
 遍历字典的时候，需要使用`items`、`keys`和`values`等方法。在`DTL`中，执行一个方法不能使用圆括号的形式。遍历字典示例代码如下：
 
 ```python
+ {％ raw ％} 
+
 {% for key,value in person.items %}
 <p>key：{{ key }}</p>
 <p>value：{{ value }}</p>
 {% endfor %}
+ {％ endraw ％} 
+
 ```
 
 ## 在`for`循环中，`DTL`提供了一些变量可供使用。这些变量如下：
 
-* `forloop.counter`：当前循环的下标。以1作为起始值。
-* `forloop.counter0`：当前循环的下标。以0作为起始值。
-* `forloop.revcounter`：当前循环的反向下标值。比如列表有5个元素，那么第一次遍历这个属性是等于5，第二次是4，以此类推。并且是以1作为最后一个元素的下标。
-* `forloop.revcounter0`：类似于forloop.revcounter。不同的是最后一个元素的下标是从0开始。
-* `forloop.first`：是否是第一次遍历。
-* `forloop.last`：是否是最后一次遍历。
-* `forloop.parentloop`：如果有多个循环嵌套，那么这个属性代表的是上一级的for循环。
-
+* forloop.counter：当前循环的下标。以1作为起始值。
+* forloop.counter0：当前循环的下标。以0作为起始值。
+* forloop.revcounter：当前循环的反向下标值。比如列表有5个元素，那么第一次遍历这个属性是等于5，第二次是4，以此类推。并且是以1作为最后一个元素的下标。
+* forloop.revcounter0：类似于forloop.revcounter。不同的是最后一个元素的下标是从0开始。
+* forloop.first：是否是第一次遍历。
+* forloop.last：是否是最后一次遍历。
+* forloop.parentloop：如果有多个循环嵌套，那么这个属性代表的是上一级的for循环。
+ 
 **模板中的for...in...没有continue和break语句，这一点和Python中有很大的不同，一定要记清楚！**
 
 ## `for...in...empty`标签：
 这个标签使用跟`for...in...`是一样的，只不过是在遍历的对象如果没有元素的情况下，会执行`empty`中的内容。示例代码如下：
 
 ```python
+ {％ raw ％} 
+
 {% for person in persons %}
 <li>{{ person }}</li>
 {% empty %}
 暂时还没有任何人
 {% endfor %}
+ {％ endraw ％} 
+
 ```
 
 continue和break在模版中是不可以使用的。
@@ -191,3 +206,4 @@ path('detail/<book_id>/',views.book_detail,name='detail')
 {% endverbatim %}
 ``` 
 
+{％endraw％} 
