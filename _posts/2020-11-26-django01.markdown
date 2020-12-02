@@ -5,6 +5,8 @@ date:   2020-11-26 06:24:34 +0800
 categories: web python django
 ---
 
+视图一般都写在app的views.py中，视图的第一个参数永远都是request（一个HttpRrequest对象），这个对象存储了请求过来的所有信息。返回结果必须是HttpResponseBase对象或者子类的对象。
+
 ## 添加views视图
 工程目录下新建一个views.py，添加如下内容
 
@@ -77,3 +79,200 @@ urlpatterns = [
 ![](http://yinyang.space/img/20201126_django1_2.png)
 
 
+## 如何在URL中添加参数：
+
+传统的Http的GET和POST方式了。
+
+```python
+# views.py
+def paramtest1(request):
+    text = "您输入的URL - id是：{}".format(request.GET.get('id'))
+    return HttpResponse(text)
+
+#urls.py
+    path('paramtest1', views.paramtest1),
+
+```
+![](http://yinyang.space/img/20201130_django.py)
+
+另外一种传递参数的方式为采用在url中使用变量的方式，使用`<参数名>`的方式可以传递参数，参数名称必须和视图中保持一致，可以传递多个参数。
+```python
+# views.py
+def paramtest(request,req_id='123'):
+    text = "您输入的id是：%s" % req_id
+    return HttpResponse(text)
+
+# urls.py
+    path('paramtest/<req_id>', views.paramtest),
+```
+
+![](http://yinyang.space/img/20201130_django1.png)
+
+可以使用`<type:param>`的方式来指定参数的类型，比如`<str:param>`，`<int:param>`或者`<uuid:param>`等。支持的类型转换器如下：
+* str  : 除了斜杠'/'以外的所有的字符都是可以的；
+* int  ：一个或者多个阿拉伯数字； 
+* path ：所有的字符都可以；
+* uuid ：只有满足`uuid.uuid4()`这个函数返回的字符串的格式；
+* slug ：英文中的横杠或者英文字符或者阿拉伯数字或者下划线。
+
+另一个例子：
+```python
+urlpatterns = [
+    path('articles/<int:year>/', views.year_archive),
+    path('articles/<int:year>/<int:month>/', views.month_archive),
+    path('articles/<int:year>/<int:month>/<int:pk>/', views.article_detail),
+]
+```
+
+## URL模块化
+当项目中存在多个应用时，URL映射的管理如果都放在主urls.py文件中的话会比较杂乱不好管理。可以采用模块化的方式分散到各个app自己的urls.py中来管理。方法如下：
+
+主urls.py中添加include使app01相关的url映射都转到app01应用下的urls.py中。应该使用`include`函数包含子urls.py，并且这个`urls.py`的路径是相对于项目的路径。
+```python
+from django.contrib import admin
+from django.urls import path, include
+from django.conf.urls import url
+
+urlpatterns = [
+    path('app01/', include('app01.urls')),
+]
+
+```
+
+然后在app01下的urls.py文件中，所有url匹配也要放在一个urlpatterns中，添加如下内容就可以了
+```python
+from django.urls import path
+
+from . import views
+
+urlpatterns = [
+    path('', views.book),
+    path('list/', views.book_list),
+    path('add_book/', views.add_book),
+]
+```
+url是会根据主urls.py和app中的urls.py进行拼接，因此注意不要多加斜杠。
+![](http://yinyang.space/img/20201130_django2.png)
+
+
+![](http://yinyang.space/img/20201130_django3.png)
+
+
+## URL命名
+### 为什需要URL命名？
+因为url是经常变化的，如果代码中写死，当url需要变更是会比较麻烦，可能会需要经常批量修改。给url取个名字，以后使用url的时候就使用它的名字进行反转，这样当url变更时不需要大量修改代码中写死的url内容。实现方式是在`path`函数中传递一个`name`参数就可以了。
+```python
+# urls.py
+urlpatterns = [
+    path('login/', views.login, name='login'),
+]
+
+# 使用的地方，比如原来使用  
+from django.shortcuts import redirect
+redirect('/login/')
+# 修改为
+from django.shortcuts import redirect, reverse
+redirect(reverse('login'))
+```
+
+### 使用应用命名空间，避免不同app之间url命名重复的问题。
+定义应用命名空间非常简单，只要在app的`urls.py`中定义一个叫做app_name的变量，来指定这个应用的命名空间，这样在做反转的时候就可以使用 `应用命名空间:URL名称`的方式进行反转。
+```python
+# urls.py
+app_name = 'front' # 定义app的命名空间为front
+
+urlpatterns = [
+    path('login/', views.login, name='login'),
+]
+
+# 使用的地方
+from django.shortcuts import redirect, reverse
+redirect(reverse('front:login')) 
+```
+
+### 使用实例命名空间
+一个app可以创建多个实例，可以使用多个url映射同一个app，同一个app下有两个实例的情况，在做反转的时候，如果使用应用命名空间，就会发生混淆，比如：
+```python
+    path('cms/', include('cms.urls')),
+    path('cms1/', include('cms.urls')),
+    path('cms2/', include('cms.urls')),
+```
+如果访问：`http://localhost:8000/cms1`，会重定向到`http://localhost:8000/cms/login` 而不是`http://localhost:8000/cms1/login`
+
+![](http://yinyang.space/img/20201130_django1.gif)
+
+
+可以使用实例命名空间来解决这个问题，只需要在`include`函数中传递一个`namespace`变量即可：
+```python
+# urls.py
+    path('cms/', include('cms.urls', namespace='cms')),
+    path('cms1/', include('cms.urls', namespace='cms1')),
+    path('cms2/', include('cms.urls', namespace='cms2')),
+
+# views.py
+from django.shortcuts import render, redirect, reverse
+def index(request):
+    username = request.GET.get('username')
+    if username:
+        return HttpResponse("后台主页")
+    else:
+        # 取得实例命名空间
+        current_namespace = request.resolver_match.namespace
+        # 在做反转的时候，就可以根据实例命名空间来指定具体的url
+        login_url = reverse('{}:login'.format(current_namespace))
+        return redirect(login_url)
+```
+
+![](http://yinyang.space/img/20201130_django3.gif)
+
+
+## inlcude函数的用法
+1. include(module, namespace=None)
+   * module : 子url的模块字符串
+   * namespace : 实例命名空间，这个地方需要注意一点，如果指定实例命名空间，那么前提必须要先指定应用命名空间，也就是在子`urls.py`中添加`app_name`变量。  
+2. include((pattern_list), app_namespace), namespace=None)
+3. include(pattern_list)
+
+
+## re_path 的用法
+re_path的作用和path一样，不同的是re_path可以使用正则表达式，功能更强大。推荐使用原生字符串（字符串前面加r）。正则表达式中定义变量，需要使用圆括号括起来，如果参数有名字，需要使用`(?P<参数名称>)`的格式。
+
+```python
+# urls.py
+urlpatterns = [
+    re_path(r'^$', views.article),
+    re_path(r"^list/(?P<year>\d{4})/$", views.article_list),
+]
+
+# views.py
+def article(request):
+    return HttpResponse("文章主页")
+
+def article_list(request, year):
+    return HttpResponse("{} 年文章列表".format(year))
+```
+
+![](http://yinyang.space/img/20201130_django5.png)
+
+## reverse 传递参数
+试想实现一个功能，满足条件时redirect到一个需要传递参数的页面。
+比如下面的功能：当输入`http://localhost:8080/article/index`时，若参数username为空则自动跳转到 `http://localhost:8080/article/detail/1`，而`detail`的URL是需要一个`article_id`作为参数的，这个时候就可以使用reverse函数的第二个参数`kwargs`来传递参数。
+```python
+# urls.py
+    path('detail/<article_id>', views.article_detail, name='detail'),
+    path('login/', views.login, name='login'),
+    path('index/', views.index, name='index'),
+
+
+# views.py
+def index(request):
+    username = request.GET.get('username')
+    if username:
+        return HttpResponse("文章首页")
+    else:
+        # kwarg : keyword arguments.
+        detail_url = reverse('detail', kwargs={"article_id": 1}) # /detail/1
+        return  redirect(detail_url)    
+``` 
+
+![](http://yinyang.space/img/20201130_django4.gif)

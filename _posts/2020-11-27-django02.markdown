@@ -5,7 +5,7 @@ date:   2020-11-27 09:43:46 +0800
 categories: web python django
 ---
 
-## 建库建用户
+# 建库建用户
 ```sql
 -- 建库
 create database djtest default charset=utf8;
@@ -17,7 +17,7 @@ CREATE USER 'djadmin'@'%' IDENTIFIED BY 'yourpasswd';
 GRANT ALL ON djtest.* TO 'djadmin'@'%';
 ```
 
-## 项目配置
+# 项目配置
 在项目的 settings.py 文件中找到 DATABASES 配置项，将其信息修改为：
 ```
 DATABASES = {
@@ -54,11 +54,143 @@ Django中如果要使用模型，必须先创建一个app，使用下面命令�
 django-admin.py startapp TestModel   
 ```
 
-
-安装mysqlclient
+安装mysqlclient，报找不到mysql_config的错误请参考本文最后的常见错误及解决方法1
 ![](http://yinyang.space/img/20201127_django2_2.png)
 
-这里踩了一个大坑，`pip install mysqlclient` 后报错了
+
+
+在命令行中运行`python3 manage.py migrate` 来创建表结构
+![](http://yinyang.space/img/20201127_django2_3.png)
+
+执行成功后生成了这些表结构
+![](http://yinyang.space/img/20201127_django2_02.png)
+
+
+
+```bash
+# 让 Django 知道我们在我们的模型有一些变更
+python3 manage.py makemigrations TestModel 
+```
+![](http://yinyang.space/img/20201127_django2_4.png)
+
+
+```bash
+# 创建表结构
+python3 manage.py migrate TestModel
+```
+![](http://yinyang.space/img/20201127_django2_5.png)
+
+数据库上也可以看到已经生成了新的数据表：TestModel_test，表名的组成结构为：应用名_类名（如：TestModel_test）
+![](http://yinyang.space/img/20201127_django2_7.png)
+
+
+
+# 添加数据
+djtest/djtest/目录下新建testdb.py，内容如下
+```python
+from django.http import HttpResponse
+
+from TestModel.models import Test
+
+
+# 数据库操作
+def insdb(request):
+    test1 = Test(name='moonwhite')
+    test1.save()
+    return HttpResponse("<p>数据添加成功！</p>")
+```
+urls.py中添加如下内容：
+```python
+    path('insdb/', testdb.insdb),
+```
+
+
+浏览器访问`localhost:8080/testdb`，即可向数据库中添加一条记录
+![](http://yinyang.space/img/20201127_django2_8.png)
+
+登陆数据库查看：
+![](http://yinyang.space/img/20201127_django2_9.png)
+
+
+# 获取数据
+Django提供了多种方式来获取数据库的内容，如下代码所示：
+```python
+def seldb(request):
+    # 通过objects这个模型管理器的all()获得所有数据行，相当于SQL中的SELECT * FROM
+    list = Test.objects.all()
+    str = ""
+    for var in list:
+        str += var.name + " "
+    return HttpResponse("<p>" + str +"</p>")
+
+def seldb1(request):
+    # filter相当于SQL中的WHERE，可设置条件过滤结果
+    qs = Test.objects.filter(id=1)
+    str=""
+    for var in qs:
+        str += var.name + " "
+    return HttpResponse("<p>" + str +"</p>")
+
+def seldb2(request):
+    # 获取单个对象
+    test2 = Test.objects.get(id=2)
+
+    return HttpResponse("<p>" + test2.name +"</p>")
+
+def seldb3(request):
+    # 限制返回的数据 相当于 SQL 中的 OFFSET 0 LIMIT 2;
+    # Test.objects.order_by('name')[0:2]
+    # # 数据排序
+    # qs = Test.objects.order_by("id")
+
+    # 上面的方法可以连锁使用
+    qs = Test.objects.order_by("id")[0:4]
+
+    str = ""
+    for var in qs:
+        str += var.name + " <br>"
+
+
+    return HttpResponse("<p>" + str +"</p>")
+
+```
+# 更新数据
+```python
+
+def upddb(request):
+    # 修改其中一个ID=2的记录的name字段，再save，相当于SQL： update table set name='newvalue' where id = 2
+    test1 = Test.objects.get(id = 2)
+    test1.name = 'moonwhite02'
+    test1.save()
+    # 另外一种方式
+    # Test.objects.filter(id=1).update(name='Google')
+
+    # 修改所有的列
+    # Test.objects.all().update(name='Google')
+    return HttpResponse('<p>' + "update success " + '</p>')
+
+```
+# 删除数据
+```python
+def deldb(request):
+    # 删除id=1的数据
+    test1 = Test.objects.get(id=1)
+    test1.delete()
+
+    # 另外一种方式
+    # Test.objects.filter(id=1).delete()
+
+    # 删除所有数据
+    # Test.objects.all().delete()
+
+    return HttpResponse("<p>删除成功</p>")
+```
+
+
+# 常见错误及解决方法
+
+## 1. pip install mysqlclient 报找不到mysql_config 
+`pip install mysqlclient` 后报错信息如下：
 ```
 Collecting mysqlclient
   Using cached mysqlclient-2.0.1.tar.gz (87 kB)
@@ -71,4 +203,31 @@ Collecting mysqlclient
     ----------------------------------------
 ERROR: Command errored out with exit status 1: python setup.py egg_info Check the logs for full command output.
 
+```
+
+解决方法：
+```bash
+brew install mysql-client
+echo 'export PATH="/usr/local/opt/mysql-client/bin:$PATH"' >> ~/.bash_profile
+export PATH="/usr/local/opt/mysql-client/bin:$PATH"
+pip install mysqlclient
+```
+
+
+## 2.
+运行时可能报下面的错误：
+```
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/django/db/backends/mysql/base.py", line 36, in <module>
+    raise ImproperlyConfigured('mysqlclient 1.4.0 or newer is required; you have %s.' % Database.__version__)
+django.core.exceptions.ImproperlyConfigured: mysqlclient 1.4.0 or newer is required; you have 0.10.1.
+
+```
+![](http://yinyang.space/img/20201127_django2_01.png)
+
+
+解决方法是在__init__.py文件中添加下面三行：
+```python
+import pymysql
+pymysql.version_info = (1, 4, 13, "final", 0)
+pymysql.install_as_MySQLdb()
 ```
