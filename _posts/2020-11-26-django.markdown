@@ -46,16 +46,29 @@ python manage.py runserver localhost:8000
 # 同时在settings.py中设置ALLOWED_HOSTS添加本机IP。
 
 
-# 让 Django 知道我们的模型有一些变更，自动创建数据库表：
+# 让 Django 知道我们的模型有一些变更，自动生成迁移脚本：
 # 该 makemigrations 命令查找所有可用的models，为任意一个在数据库中不存在对应数据表的model创建 migrations 脚本文件。
 # migrate 命令则运行这些 migrations 自动创建数据库表。
 python manage.py makemigrations TestModel 
 python manage.py makemigrations
-python manage.py migrate
+常用选项：
+app_label : 后面可以跟一个或多个app，那么就只会针对这几个app生成迁移脚本。
+-name：指定迁移脚本的名字
+-empty：生成一个空的迁移脚本。
 
-# 创建表结构
+# 执行迁移脚本，创建表结构
 python manage.py migrate 
-# 或者
+# 或者后面添加app_label，只执行指定app的迁移脚本。
 python manage.py migrate TestModel
 
+python manage.mp migrate app_label migrationname # 将某个app下指定名字的migration文件映射到数据库中。
+
+--fake ： 可以讲指定的迁移脚本名字添加到数据库中。但是并不会真正的执行迁移脚本。
+--fake-initial : 将第一次生成的迁移文件版本号记录在数据库中，但是并不会真正的执行迁移脚本。
+
+# 使用已有数据库表生成ORM模型
+python manage.py inspectdb > models.py 
+
+# 查看某个app下的迁移文件。
+python manage.py showmigrations
 ```

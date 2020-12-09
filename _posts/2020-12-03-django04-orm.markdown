@@ -1,0 +1,307 @@
+---
+layout: post
+title:  "Django笔记：4.ORM"
+date:   2020-12-04 01:48:43 +0800
+categories: web
+---
+
+
+# ORM对数据库的基本操作：
+
+## 添加数据：
+只要使用ORM模型创建一个对象。然后再调用这个ORM模型的`save`方法就可以保存了。
+示例代码如下：
+```python
+book = Book(name='西游记',author='吴承恩',price=100)
+book.save()
+```
+
+
+## 查找数据：
+所有的查找工作都是使用模型上的`objects`属性来完成的。当然也可以自定义查询对象。这部分功能会在后面讲到。
+1. 根据主键进行查找：使用主键进行查找。可以使用`objects.get`方法。然后传递`pk=xx`的方式进行查找。示例代码如下：
+    ```python
+    book = Book.objects.get(pk=2)
+    ```
+2. 根据其他字段进行查找：可以使用`objects.filter`方法进行查找。示例代码如下：
+    ```python
+    books = Book.objects.filter(name='三国演义')
+    ```
+    使用`filter`方法返回来的是一个`QuerySet`对象。这个对象类似于列表。我们可以使用这个对象的`first`方法来获取第一个值。
+
+
+## 删除数据：
+首先查找到对应的数据模型。然后再执行这个模型的`delete`方法即可删除。示例代码如下：
+```python
+book = Book.objects.get(pk=1)
+book.delete()
+```
+
+
+## 修改数据：
+首先查找到对应的数据模型。然后修改这个模型上的属性的值。再执行`save`方法即可修改完成。示例代码如下：
+```python
+    book = Book.objects.get(pk=2)
+    book.price = 200
+    book.save()
+```
+
+
+
+# 常用Field笔记：
+
+
+## naive时间和aware时间：
+### 什么是naive时间？什么是aware时间？
+1. naive时间：不知道自己的时间表示的是哪个时区的。也就是不知道自己几斤几两。比较幼稚。
+2. aware时间：知道自己的时间表示的是哪个时区的。也就是比较清醒。
+
+### pytz库：
+专门用来处理时区的库。这个库会经常更新一些时区的数据，不需要我们担心。并且这个库在安装Django的时候会默认的安装。如果没有安装，那么可以通过`pip install pytz`的方式进行安装。
+
+### astimezone方法：
+将一个时区的时间转换为另外一个时区的时间。这个方法只能被`aware`类型的时间调用。不能被`navie`类型的时间调用。
+示例代码如下：
+```python
+import pytz
+from datetime import datetime
+now = datetime.now() # 这是一个navie类型的时间
+utc_timezone = pytz.timezone("UTC") # 定义UTC的时区对象
+utc_now = now.astimezone(utc_timezone) # 将当前的时间转换为UTC时区的时间
+>> ValueError: astimezone() cannot be applied to a naive datetime # 会抛出一个异常，原因就是因为navie类型的时间不能调用astimezone方法
+
+
+now = now.replace(tzinfo=pytz.timezone('Asia/Shanghai'))
+utc_now = now.astimezone(utc_timezone)
+# 这时候就可以正确的转换。
+```
+
+### replace方法：
+可以将一个时间的某些属性进行更改。
+
+### django.utils.timezone.now方法：
+会根据`settings.py`中是否设置了`USE_TZ=True`获取当前的时间。如果设置了，那么就获取一个`aware`类型的`UTC`时间。如果没有设置，那么就会获取一个`navie`类型的时间。
+
+### django.utils.timezone.localtime方法：
+会根据`setting.py`中的`TIME_ZONE`来将一个`aware`类型的时间转换为`TIME_ZONE`指定时区的时间。
+
+## DateField：
+
+日期类型。在`Python`中是`datetime.date`类型，可以记录年月日。在映射到数据库中也是`date`类型。使用这个`Field`可以传递以下几个参数：
+1. `auto_now`：在每次这个数据保存的时候，都使用当前的时间。比如作为一个记录修改日期的字段，可以将这个属性设置为`True`。
+2. `auto_now_add`：在每次数据第一次被添加进去的时候，都使用当前的时间。比如作为一个记录第一次入库的字段，可以将这个属性设置为`True`。
+
+## DateTimeField：
+
+日期时间类型，类似于`DateField`。不仅仅可以存储日期，还可以存储时间。映射到数据库中是`datetime`类型。这个`Field`也可以使用`auto_now`和`auto_now_add`两个属性。
+
+## TimeField：
+
+时间类型。在数据库中是`time`类型。在`Python`中是`datetime.time`类型。
+
+### navie和aware介绍以及在django中的用法：
+https://docs.djangoproject.com/en/2.0/topics/i18n/timezones/
+
+
+## EmailField：
+类似于`CharField`。在数据库底层也是一个`varchar`类型。最大长度是254个字符。
+
+## FileField：
+用来存储文件的。这个请参考后面的文件上传章节部分。
+
+### ImageField：
+用来存储图片文件的。这个请参考后面的图片上传章节部分。
+
+### FloatField：
+浮点类型。映射到数据库中是`float`类型。
+
+### IntegerField：
+整形。值的区间是`-2147483648——2147483647`。
+
+### BigIntegerField：
+大整形。值的区间是`-9223372036854775808——9223372036854775807`。
+
+### PositiveIntegerField：
+正整形。值的区间是`0——2147483647`。
+
+### SmallIntegerField：
+小整形。值的区间是`-32768——32767`。
+
+### PositiveSmallIntegerField：
+正小整形。值的区间是`0——32767`。
+
+### TextField：
+大量的文本类型。映射到数据库中是longtext类型。
+
+### UUIDField：
+只能存储`uuid`格式的字符串。`uuid`是一个32位的全球唯一的字符串，一般用来作为主键。
+
+### URLField：
+类似于`CharField`，只不过只能用来存储`url`格式的字符串。并且默认的`max_length`是200。
+
+
+## Field常用的参数
+
+### null：
+
+如果设置为`True`，`Django`将会在映射表的时候指定是否为空。默认是为`False`。在使用字符串相关的`Field`（CharField/TextField）的时候，官方推荐尽量不要使用这个参数，也就是保持默认值`False`。因为`Django`在处理字符串相关的`Field`的时候，即使这个`Field`的`null=False`，如果你没有给这个`Field`传递任何值，那么`Django`也会使用一个空的字符串`""`来作为默认值存储进去。因此如果再使用`null=True`，`Django`会产生两种空值的情形（NULL或者空字符串）。如果想要在表单验证的时候允许这个字符串为空，那么建议使用`blank=True`。如果你的`Field`是`BooleanField`，那么对应的可空的字段则为`NullBooleanField`。
+
+### blank：
+
+标识这个字段在表单验证的时候是否可以为空。默认是`False`。
+这个和`null`是有区别的，`null`是一个纯数据库级别的。而`blank`是表单验证级别的。
+
+### db\_column：
+
+这个字段在数据库中的名字。如果没有设置这个参数，那么将会使用模型中属性的名字。
+
+### default：
+
+默认值。可以为一个值，或者是一个函数，但是不支持`lambda`表达式。并且不支持列表/字典/集合等可变的数据结构。
+
+### primary\_key：
+
+是否为主键。默认是`False`。
+
+### unique：
+
+在表中这个字段的值是否唯一。一般是设置手机号码/邮箱等。
+
+更多`Field`参数请参考官方文档：[https://docs.djangoproject.com/zh-hans/2.0/ref/models/fields/](https://docs.djangoproject.com/zh-hans/2.0/ref/models/fields/)
+
+
+
+## 模型中`Meta`配置：
+
+对于一些模型级别的配置。我们可以在模型中定义一个类，叫做`Meta`。然后在这个类中添加一些类属性来控制模型的作用。比如我们想要在数据库映射的时候使用自己指定的表名，而不是使用模型的名称。那么我们可以在`Meta`类中添加一个`db_table`的属性。示例代码如下：
+```python
+class Book(models.Model):
+    name = models.CharField(max_length=20,null=False)
+    desc = models.CharField(max_length=100,name='description',db_column="description1")
+
+    class Meta:
+        db_table = 'book_model'
+```
+
+以下将对`Meta`类中的一些常用配置进行解释。
+
+### db_table：
+这个模型映射到数据库中的表名。如果没有指定这个参数，那么在映射的时候将会使用模型名来作为默认的表名。
+
+### ordering：
+设置在提取数据的排序方式。后面章节会讲到如何查找数据。比如我想在查找数据的时候根据添加的时间排序，那么示例代码如下：
+```python
+class Book(models.Model):
+    name = models.CharField(max_length=20,null=False)
+    desc = models.CharField(max_length=100,name='description',db_column="description1")
+    pub_date = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        db_table = 'book_model'
+        ordering = ['pub_date']
+```
+
+更多的配置后面会慢慢介绍到。
+官方文档：https://docs.djangoproject.com/en/2.0/ref/models/options/
+
+
+
+
+# 表关系笔记：
+
+## 一对多：
+1. 应用场景：比如文章和作者之间的关系。一个文章只能由一个作者编写，但是一个作者可以写多篇文章。文章和作者之间的关系就是典型的多对一的关系。
+2. 实现方式：一对多或者多对一，都是通过`ForeignKey`来实现的。还是以文章和作者的案例进行讲解。
+
+```python
+class User(models.Model):
+    username = models.CharField(max_length=20)
+    password = models.CharField(max_length=100)
+
+class Article(models.Model):
+    title = models.CharField(max_length=100)
+    content = models.TextField()
+    author = models.ForeignKey("User",on_delete=models.CASCADE)
+```
+
+那么以后在给`Article`对象指定`author`，就可以使用以下代码来完成：
+
+```python
+article = Article(title='abc',content='123')
+author = User(username='zhiliao',password='111111')
+# 要先保存到数据库中
+author.save()
+article.author = author
+article.save()
+```
+
+并且以后如果想要获取某个用户下所有的文章，可以通过`article_set`来实现。示例代码如下：
+
+```python
+user = User.objects.first()
+# 获取第一个用户写的所有文章
+articles = user.article_set.all()
+for article in articles:
+    print(article)
+```
+
+并且如果想要将文章添加到某个分类中。可以使用一下的方式：
+```python
+category = Category.objects.first()
+
+article = Article(title='bbb',content='vvv')
+article.author = FrontUser.objects.first()
+
+category.article_set.add(article,bulk=False)
+```
+* 使用`bulk=False`，那么Django会自动的保存article，而不需要在添加到category之前先保存article。
+* 或者是另外一种解决方式是，在添加到`category.article_set`中之前，先将`article`保存到数据库中。但是如果`article.category`不能为空，那么就产生一种死循环了，article没有`category`不能保存，而将article添加到`cateogry.artile_set`中，又需要article之前是已经存储到数据库中的。
+* 如果是上面的那种需求，建议使用`bulk=False`的解决方案。
+
+## 一对一：
+1. 在Django中一对一是通过`models.OnetToOneField`来实现的。这个`OneToOneField`其实本质上就是一个外键，只不过这个外键有一个`唯一约束（unique key）`，来实现一对一。
+2. 以后如果想要反向引用，那么是通过引用的模型的名字转换为小写的形式进行访问。比如以下模型：
+    ```python
+    class FrontUser(models.Model):
+        username = models.CharField(max_length=200)
+
+    class UserExtension(models.Model):
+        school = models.CharField(max_length=100)
+        user = models.OneToOneField("FrontUser",on_delete=models.CASCADE)
+
+    # 通过userextension来访问UserExtension对象
+    user = FrontUser.objects.first()
+    print(user.userextension)
+    ```
+    `UserExtension`的对象，可以通过`user`来访问到对应的user对象。并且`FrontUser`对象可以使用`userextension`来访问对应的`UserExtension`对象。
+    如果不想使用Django默认的引用属性名字。那么可以在`OneToOneField`中添加一个`related_name`参数。示例代码如下：
+    ```python
+    class FrontUser(models.Model):
+        username = models.CharField(max_length=200)
+
+    class UserExtension(models.Model):
+        school = models.CharField(max_length=100)
+        user = models.OneToOneField("FrontUser",on_delete=models.CASCADE,related_name='extension')
+
+    # 通过extension来访问到UserExtension对象
+    user = FrontUser.objects.first()
+    print(user.extension)
+    ```
+    那么以后就`FrontUser`的对象就可以通过`extension`属性来访问到对应的`UserExtension`对象。
+
+## 多对多：
+1. 应用场景：比如文章和标签的关系。一篇文章可以有多个标签，一个标签可以被多个文章所引用。因此标签和文章的关系是典型的多对多的关系。
+
+2. 实现方式：`Django`为这种多对多的实现提供了专门的`Field`。叫做`ManyToManyField`。还是拿文章和标签为例进行讲解。示例代码如下：
+
+```python
+class Article(models.Model):
+    title = models.CharField(max_length=100)
+    content = models.TextField()
+    tags = models.ManyToManyField("Tag",related_name="articles")
+
+class Tag(models.Model):
+    name = models.CharField(max_length=50)
+```
+
+在数据库层面，实际上`Django`是为这种多对多的关系建立了一个中间表。这个中间表分别定义了两个外键，引用到`article`和`tag`两张表的主键。
