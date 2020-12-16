@@ -1,0 +1,118 @@
+---
+layout: post
+title:  "前端自动化开发环境搭建笔记"
+date:   2020-12-16 09:52:44 +0800
+categories: web nvm node npm gulp
+---
+
+
+# 1. nvm的安装
+nvm（node version manager）： 是node.js的版本管理工具，
+## 1.1 安装nvm
+[官方安装说明文档](https://github.com/nvm-sh/nvm#install--update-script)
+安装命令：
+```bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
+```
+或者
+```bash
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
+```
+
+## 1.2 配置环境变量
+然后还需要把下面环境变量内容添加到.bash_profile中，如果使用oh-my-zsh的话配置到.zshrc中
+```bash
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+```
+## 1.3 常用命令
+```bash
+  nvm install 8.0.0                     安装特定版本的node
+  nvm use 8.0                           使用最新可用的8.0.x的release版本
+  nvm run 6.10.3 app.js                 使用node 6.10.3运行app.js
+  nvm exec 4.8.3 node app.js            使用4.8.3版本的node运行 app.js
+  nvm alias default 8.1.0               设定node默认版本
+  nvm alias default node                总是默认设置最新可用的node版本
+  nvm install node                      安装最新可用版本的node
+  nvm use node                          使用最新可用版本的node
+  nvm install --lts                     安装最新的LTS版本的node
+  nvm use --lts                         使用最新的LTS版本的node
+  nvm set-colors cgYmW                  设置文本颜色为： cyan, green, bold yellow, magenta, and white
+
+```
+
+# 2. 安装node和npm
+安装完nvm之后，我们就可以使用nvm来安装node了。
+```
+  nvm install node                      安装最新可用版本的node
+  nvm install --lts                     安装最新的LTS版本的node
+```
+
+npm类似于python的pip，可以方便的安装一些前端开发的包。
+在安装完node之后npm就也自动的被安装了
+
+# 3. gulp的安装及使用
+gulp用来自动化开发流程，比如saas转css，css和js压缩等。
+## 3.1 安装gulp
+```bash
+# 本地安装
+npm install gulp 
+# --save-dev表示写入package.json文件
+npm install gulp --save-dev
+# 参数-g表示global，使得gulp可以在全局环境比如系统命令行中使用。
+npm install gulp -g
+```
+## 3.1 gulp的使用
+在项目根目录创建一个gulpfile.js，然后在gulpfile.js中插入如下代码：
+```javascript
+ var gulp = require("gulp")
+ var cssnano = require("gulp-cssnano")
+
+ // 定义css文件改动任务
+ gulp.task("css", done => {
+    gulp.src("./css/*.css")
+    .pipe(cssnano())
+    .pipe(gulp.dest("./dist/css"))
+    done();
+ });
+```
+## 3.2 gulp常用命令
+
+## 3.3 gulp常见问题
+### 任务未完成错误
+
+
+使用gulp css命令的时候，提示如下信息：
+```
+[21:41:30] The following tasks did not complete: css
+[21:41:30] Did you forget to signal async completion?
+```
+![](http://yinyang.space/img/20201216_gulp1.png)
+
+错误代码：
+```javascript
+ var gulp = require("gulp")
+ var cssnano = require("gulp-cssnano")
+
+ // 定义css文件改动任务
+ gulp.task("css", function() {
+    gulp.src("./css/*.css")
+    .pipe(cssnano())
+    .pipe(gulp.dest("./dist/css"))
+ });  
+ ```
+
+修改为如下格式即可解决：
+```javascript
+ var gulp = require("gulp")
+ var cssnano = require("gulp-cssnano")
+
+ // 定义css文件改动任务
+ gulp.task("css", done => {
+    gulp.src("./css/*.css")
+    .pipe(cssnano())
+    .pipe(gulp.dest("./dist/css"))
+    done();
+ });  
+```
+
