@@ -1,0 +1,206 @@
+---
+layout: post
+title:  "使用gulp4.0搭建前端自动化开发环境"
+date:   2020-12-19 11:29:37 +0800
+categories: web gulp front
+---
+
+本文要实现的目的是使用gulp整合前端开发环境，当前端scss样式文件，JavaScript文件或者图片资源文件、html文件发生任何改变时，自动触发gulp进行压缩、合并、重命名、并使浏览器自动加载变更内容。
+
+## 1. npm init
+创建一个文件夹用于初始化项目，这里使用front
+然后在front目录执行`npm init`命令，按照提示均默认输入即可。
+```bash
+➜  mkdir front
+➜  cd front
+➜  npm init
+This utility will walk you through creating a package.json file.
+It only covers the most common items, and tries to guess sensible defaults.
+
+See `npm help init` for definitive documentation on these fields
+and exactly what they do.
+
+Use `npm install <pkg>` afterwards to install a package and
+save it as a dependency in the package.json file.
+
+Press ^C at any time to quit.
+package name: (front)
+version: (1.0.0)
+description: front source
+entry point: (index.js)
+test command:
+git repository:
+keywords:
+author: moonwhite
+license: (ISC)
+About to write to /Users/yourusername/front/package.json:
+
+{
+  "name": "front",
+  "version": "1.0.0",
+  "description": "front source",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "moonwhite",
+  "license": "ISC"
+}
+
+
+Is this OK? (yes) yes
+➜  front
+```
+关于本文中使用到的package及版本可以参考下面`package.json`文件，可以将下面代码复制到`package.json`中，然后执行`npm install`即可。
+```json
+"devDependencies": {
+    "browser-sync": "^2.26.13",
+    "gulp": "^4.0.2",
+    "gulp-cache": "^1.1.3",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssnano": "^2.1.3",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^4.1.0",
+    "gulp-uglify": "^3.0.2",
+    "gulp-watch": "^5.0.1"
+  }
+```
+
+## 2. 项目目录结构
+初始项目目录结构如下：
+```bash
+├── dist                        # 生产发布目录
+│   ├── css                     # 生产css文件存放目录
+│   │   └── sample.min.css      # gulp处理后的生产css文件
+│   ├── images                  # 生产图片文件存放目录
+│   │   └── *.jpg               # 压缩后的生产图片文件
+│   ├── js                      # 生产存放js文件的目录
+│   │   └── index.min.js        # gulp丑化压缩后的生产js文件
+│   └── other
+├── gulpfile.js                 # gulpfile
+├── node_modules                # npm依赖模块目录
+│       └── ...
+├── package-lock.json
+├── package.json                # package文件
+├── src                         # 前台源码目录
+│   ├── css                     # css源码
+│   ├── images                  # 存放原图
+│   │   └── *.jpg
+│   ├── js                      # JavaScript源码
+│   │   └── *.js
+│   └── scss                    # sass源码
+│       └── *.scss
+├── templates                   # HTML模版目录
+│   ├── moduledir               # 模块文件夹
+│   └── moduledir
+│       └── *.html
+└── otherfile
+```
+## 3. 编写gulpfile
+
+最后gulpfile.js 内容如下：
+```javascript
+const { series, parallel } = require('gulp');
+
+const gulp = require("gulp")
+const cssnano = require("gulp-cssnano")
+const rename = require('gulp-rename')
+const uglify = require('gulp-uglify')
+const concat = require('gulp-concat')
+const sass = require('gulp-sass')
+const cache = require('gulp-cache')
+const imagemin = require('gulp-imagemin')
+const bs = require('browser-sync').create()
+
+// 定义常用路径
+var path = {
+    'css' : './src/css/',
+    'scss': './src/scss/',
+    'js' : './src/js/',
+    'images': './src/images/',
+    'dist_css': './dist/css/',
+    'dist_js': './dist/js/',
+    'dist_images': './dist/images/',
+    'templates': './templates/'
+};
+
+
+// sass version
+function style(){
+   // 定义scss源文件位置
+   return gulp.src(path.scss + '**/*.scss')
+   // 传递给sass编译器生成css文件
+   .pipe(sass().on('error', sass.logError))
+   // 压缩css
+   .pipe(cssnano())
+   // 重命名为 filename.min.css
+   .pipe(rename({suffix:'.min'}))
+   // 3. 保存编译后的css文件
+   .pipe(gulp.dest(path.dist_css));
+   // 4. stream changes to all browser.
+   // 由于watch 中监视了path.dist_css，所以这里不再需要了。
+   // .pipe(bs.stream());
+}
+
+// Javascript任务
+function js(){
+   return gulp.src(path.js + '*.js')
+   .pipe(concat('index.js'))
+   .pipe(uglify({
+      toplevel: true,
+      compress: {
+         drop_console : true
+      }
+   }))
+   .pipe(rename({suffix: '.min'}))
+   .pipe(gulp.dest(path.dist_js));
+}
+
+// 压缩图片
+function images(){
+   gulp.src(path.images + '*.*')
+   .pipe(cache(imagemin()))
+   .pipe(gulp.dest(path.dist_images));
+}
+
+function watch(){
+   bs.init({
+      server:{
+         baseDir: './'
+      }
+   });
+   // gulp.watch('./css/**/*.css', css);
+   // 监视path.scss 目录，如果有变动则执行style任务。
+   gulp.watch(path.scss + '**/*.scss', style);
+
+   // 监视path.js 目录，如果有变动则执行js任务。
+   gulp.watch(path.js + '**/*.js', js);
+
+   // 监视path.images 目录，如果有变动则执行images任务。
+   gulp.watch(path.images + '*.*', images);
+
+   // 监视path.templates 目录，如果有变动则通知浏览器reload。
+   gulp.watch(path.templates + '**/*.html').on('change', bs.reload);
+
+   // 监视path.dist_is 目录，如果有变动则通知浏览器reload。
+   gulp.watch(path.dist_js + '*.js').on('change', bs.reload);
+
+   // 监视path.dist_css 目录，如果有变动则通知浏览器reload。
+   gulp.watch(path.dist_css + '*.css').on('change', bs.reload);
+
+   // 监视path.dist_images 目录，如果有变动则通知浏览器reload。
+   gulp.watch(path.dist_images + '*.*').on('change', bs.reload);
+}
+
+// 导出任务，使得可以在命令行使用。
+exports.style = style;
+exports.js = js;
+exports.images = images;
+exports.watch = watch;
+
+```
+
+最后，在front目录执行`gulp watch`命令即可，效果如下：
+
+![](http://yinyang.space/img/20201219-gulp.gif)

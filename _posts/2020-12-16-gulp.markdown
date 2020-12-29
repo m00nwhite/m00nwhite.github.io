@@ -76,7 +76,40 @@ npm install gulp -g
     done();
  });
 ```
-### 3.3 gulp常用命令
+### 3.3 gulp常用命令及插件
+
+```bash
+gulp task #执行gulp命令
+```
+
+常用gulp包
+```bash
+# 文件重命名
+npm install gulp-rename --save-dev
+
+# css压缩
+npm install gulp-cssnano --save-dev
+
+# js压缩
+npm install gulp-uglifu --save-dev
+
+# 合并多个文件
+npm install gulp-concat --save-dev
+
+# 压缩图片
+npm install gulp-imagemin --save-dev
+
+# 图片缓存
+npm install gulp-cache --save-dev
+
+# 文件监控自动执行任务
+npm install gulp-watch --save-dev
+
+# 浏览器自动同步
+npm install browser-sync --save-dev
+
+
+```
 
 ### 3.4 gulp常见问题
 #### 任务未完成错误
