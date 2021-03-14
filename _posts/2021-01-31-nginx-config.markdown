@@ -25,12 +25,6 @@ categories: nginx django php-fpm fastcgi python php
 
 
 
-```
-
-
-
-
-```
 ## 2. Nginx配置
 ### 2.1 修改Nginx主配置文件 
 修改 `/etc/nginx/nginx.conf` 
@@ -203,3 +197,12 @@ vacuum       = true
 
 
 
+## 5. 配置VCS
+```bash
+# git初始化
+git init
+# 查看指定远程仓库地址
+git remote get-url origin 
+# 设置远程仓库地址
+git remote set-url origin 你新的远程仓库地址
+```

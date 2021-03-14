@@ -1,0 +1,147 @@
+---
+layout: post
+title:  "VSCode 中 snippets 的使用"
+date:   2020-11-12 21:57:25 +0800
+categories: php web
+---
+
+# Bootstrap4 笔记
+
+示例代码
+
+```html
+    <div class="d-flex p-3 bg-secondary text-dark container-fluid">
+        <div class="item p-2 bg-info">Flex item 1</div>
+        <div class="item p-2 bg-warning">Flex item 2</div>
+        <div class="item p-2 bg-primary">Flex item 3</div>
+    </div>
+```
+
+
+
+* bg-info、bg-warning、bg-primary：设置各种背景色
+
+* text-white：白色字体
+
+* text-black-50: 半黑字体
+
+* container/container-fluid：容器/全屏容器
+
+* d-flex：
+
+* flex-direction：可以取四个值：
+
+  - row: 主轴水平方向，从左至右排列
+
+    ![](http://yinyang.space/img/20210314_flex-row.png)
+
+  - row-reverse：主轴水平方向，从右至左排列
+
+    ![](http://yinyang.space/img/20210314-flex-row-reverse.png)
+
+  - column：主轴竖直方向，从上至下排列
+
+    ![](http://yinyang.space/img/20210314-flex-direction-column.png)
+
+  - column-reverse：主轴竖直方向，从下至上排列
+
+    ![](http://yinyang.space/img/20210314-flex-column-reverse.png)
+
+* flex-wrap/flex-nowrap ： 当容器显示不下时换行/不换行
+
+  - flex-wrap:
+
+    ![](http://yinyang.space/img/20210314-wrap.png)
+
+  
+
+  - flex-nowrap:![](http://yinyang.space/img/20210314-nowrap.png)
+
+  
+
+* flex-basis：定义了item元素的空间大小。
+
+  ![](http://yinyang.space/img/20210314-flex-basis.png)
+
+* flex-grow：若被赋值为一个正整数， flex 元素会以 `flex-basis` 为基础，沿主轴方向增长尺寸，后面的数值为增长比例。
+
+* flex-shrink：`flex-grow`属性是处理flex元素在主轴上增加空间的问题，相反`flex-shrink`属性是处理flex元素收缩的问题。按照后面的数值比例进行收缩。
+
+* flex简写：你可能很少看到 `flex-grow`，`flex-shrink`，和 `flex-basis` 属性单独使用，而是混合着写在 [`flex`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex) 简写形式中。 `Flex` 简写形式允许你把三个数值按这个顺序书写 — `flex-grow`，`flex-shrink`，`flex-basis`。
+
+```css
+.box {
+  display: flex;
+}
+
+.one {
+  flex: 1 1 auto;
+}
+
+.two {
+  flex: 1 1 auto;
+}
+
+.three {
+  flex: 1 1 auto;
+}
+
+```
+
+```html
+<div class="box">
+  <div class="one">One</div>
+  <div class="two">Two</div>
+  <div class="three">Three</div>
+</div>
+```
+
+* align-items：属性可以使元素在交叉轴方向对齐，应用于父容器。
+
+  - streth： 拉伸到最大容器对齐
+
+    ![](http://yinyang.space/img/20210314-flex-streth.png)
+
+  - flex-start：![](http://yinyang.space/img/20210314-flex-align-start.png)
+
+  - flex-end
+
+    ![](http://yinyang.space/img/20210314-flex-item-end.png)
+
+  - center
+
+    ![](http://yinyang.space/img/20210314-flex-center.png)
+
+  
+
+* Justify-content：使元素在主轴方向对齐，主轴方向是通过 `flex-direction` 设置的方向，初始值为flex-start，
+
+  你也可以把值设置为`space-between`，把元素排列好之后的剩余空间拿出来，平均分配到元素之间，所以元素之间间隔相等。或者使用`space-around`，使每个元素的左右空间相等。
+
+  - stretch ：
+
+  - flex-start：
+
+    ![](http://yinyang.space/img/20210314-flex-justify-start.png)
+
+  - flex-end：
+
+    ![](http://yinyang.space/img/20210314-flex-justify-end.png)
+
+  - center：
+
+    ![](http://yinyang.space/img/20210314-flex-justify-center.png)
+
+  - space-evenly:
+
+    ![](http://yinyang.space/img/20210314-flex-space-evenly.png)
+
+  - space-around：
+
+    ![](http://yinyang.space/img/20210314-flex-space-around.png)
+
+  - space-between：
+
+    ![](http://yinyang.space/img/20210314-flex-space-between.png)
+
+* 
